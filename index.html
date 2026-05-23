@@ -12,13 +12,33 @@
             --accent-amber:#f59e0b;--accent-emerald:#10b981;
             --glow-cyan:rgba(6,182,212,.4);--glow-purple:rgba(124,58,237,.35);
             --text-primary:#e2e8f0;--text-secondary:#94a3b8;
+            --panel-bg:#050e1a;--panel-bg2:rgba(0,0,0,.4);--panel-bg3:rgba(0,0,0,.5);
+            --border-cyan:rgba(6,182,212,.1);--border-purple:rgba(124,58,237,.2);
+            --btn-bg:rgba(255,255,255,.06);--btn-border:rgba(255,255,255,.1);--btn-text:#cbd5e1;
+            --input-bg:rgba(255,255,255,.04);--select-opt:#0f2847;
+            --msg-assist-bg:rgba(255,255,255,.07);
+            --tooltip-bg:rgba(15,40,71,.95);--info-panel-bg:rgba(12,30,55,.92);
+            --canvas-bg:#050e1a;
+        }
+        [data-theme="light"] {
+            --bg-deep:#e5e5e5;--bg-card:rgba(245,245,245,.95);
+            --accent-purple:#7c3aed;--accent-cyan:#0891b2;--accent-pink:#db2777;
+            --accent-amber:#d97706;--accent-emerald:#059669;
+            --glow-cyan:rgba(8,145,178,.2);--glow-purple:rgba(124,58,237,.15);
+            --text-primary:#2d2d2d;--text-secondary:#6b6b6b;
+            --panel-bg:#d9d9d9;--panel-bg2:rgba(210,210,210,.85);--panel-bg3:rgba(220,220,220,.9);
+            --border-cyan:rgba(0,0,0,.08);--border-purple:rgba(0,0,0,.1);
+            --btn-bg:rgba(255,255,255,.6);--btn-border:rgba(0,0,0,.1);--btn-text:#3a3a3a;
+            --input-bg:rgba(255,255,255,.75);--select-opt:#f5f5f5;
+            --msg-assist-bg:rgba(240,240,240,.9);
+            --tooltip-bg:rgba(250,250,250,.97);--info-panel-bg:rgba(250,250,250,.97);
         }
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Noto Sans SC',sans-serif;background:var(--bg-deep);color:var(--text-primary);height:100vh;overflow:hidden}
 
         /* ═══ MAIN SPLIT + RESIZABLE DIVIDER ═══ */
         .main-layout{display:flex;height:100vh;width:100vw}
-        .left-panel{width:60%;min-width:380px;position:relative;background:#050e1a;display:flex;flex-direction:column;overflow:hidden}
+        .left-panel{width:60%;min-width:380px;position:relative;background:var(--panel-bg);display:flex;flex-direction:column;overflow:hidden}
         .resize-handle{width:6px;background:rgba(6,182,212,.15);cursor:col-resize;flex-shrink:0;position:relative;transition:background .2s}
         .resize-handle:hover,.resize-handle.active{background:var(--accent-cyan)}
         .resize-handle::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:2px;height:40px;background:rgba(255,255,255,.3);border-radius:1px}
@@ -27,7 +47,7 @@
         .right-panel::-webkit-scrollbar-thumb{background:var(--accent-purple);border-radius:3px}
 
         /* ═══ LEFT - SOLAR SYSTEM SIM ═══ */
-        .sim-header{display:flex;flex-direction:column;gap:4px;padding:6px 10px;background:rgba(0,0,0,.4);border-bottom:1px solid rgba(6,182,212,.1);flex-shrink:0}
+        .sim-header{display:flex;flex-direction:column;gap:4px;padding:6px 10px;background:var(--panel-bg2);border-bottom:1px solid var(--border-cyan);flex-shrink:0}
         .sim-header-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
         .sim-title{font-family:'Orbitron',sans-serif;font-size:.75rem;background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
         .sim-date{font-size:.65rem;color:var(--text-secondary);font-family:'Orbitron',sans-serif;white-space:nowrap}
@@ -36,7 +56,7 @@
         .sim-season.summer{background:rgba(249,115,22,.2);color:#f97316;border:1px solid rgba(249,115,22,.3)}
         .sim-season.autumn{background:rgba(251,191,36,.2);color:#fbbf24;border:1px solid rgba(251,191,36,.3)}
         .sim-season.winter{background:rgba(59,130,246,.2);color:#3b82f6;border:1px solid rgba(59,130,246,.3)}
-        .sim-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#cbd5e1;padding:3px 8px;font-size:.65rem;cursor:pointer;transition:all .2s;white-space:nowrap}
+        .sim-btn{background:var(--btn-bg);border:1px solid var(--btn-border);border-radius:6px;color:var(--btn-text);padding:3px 8px;font-size:.65rem;cursor:pointer;transition:all .2s;white-space:nowrap}
         .sim-btn:hover{background:rgba(6,182,212,.2);border-color:var(--accent-cyan)}
         .sim-btn.active{background:var(--accent-cyan);color:#000;border-color:var(--accent-cyan)}
         .sim-btn.toggle-on{background:var(--accent-purple);color:#fff;border-color:var(--accent-purple)}
@@ -47,11 +67,11 @@
         .sim-speed{display:flex;align-items:center;gap:3px}
         .sim-speed input[type=range]{width:50px;accent-color:var(--accent-cyan)}
         .speed-label{font-size:.62rem;color:var(--text-secondary)}
-        .sim-focus select{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#cbd5e1;font-size:.65rem;padding:2px 6px;cursor:pointer}
+        .sim-focus select{background:var(--btn-bg);border:1px solid var(--btn-border);border-radius:6px;color:var(--btn-text);font-size:.65rem;padding:2px 6px;cursor:pointer}
         .sim-focus select:focus{outline:none;border-color:var(--accent-cyan)}
-        .sim-focus select option{background:#0f2847}
-        .planet-tooltip{position:fixed;pointer-events:none;background:rgba(15,40,71,.95);border:1px solid var(--accent-cyan);border-radius:10px;padding:10px 14px;font-size:.78rem;display:none;z-index:100;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.5)}
-        .planet-info-panel{position:absolute;bottom:12px;left:12px;right:12px;background:rgba(12,30,55,.92);border:1px solid rgba(6,182,212,.3);border-radius:12px;padding:14px 16px;font-size:.75rem;display:none;z-index:10;max-height:40%;overflow-y:auto}
+        .sim-focus select option{background:var(--select-opt)}
+        .planet-tooltip{position:fixed;pointer-events:none;background:var(--tooltip-bg);border:1px solid var(--accent-cyan);border-radius:10px;padding:10px 14px;font-size:.78rem;display:none;z-index:100;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+        .planet-info-panel{position:absolute;bottom:12px;left:12px;right:12px;background:var(--info-panel-bg);border:1px solid rgba(6,182,212,.3);border-radius:12px;padding:14px 16px;font-size:.75rem;display:none;z-index:10;max-height:40%;overflow-y:auto}
         .planet-info-panel .close-info{position:absolute;top:6px;right:10px;background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.1rem}
         .planet-info-panel .info-row{display:flex;justify-content:space-between;margin-bottom:3px}
         .planet-info-panel .info-label{color:var(--text-secondary)}
@@ -60,14 +80,30 @@
         .planet-info-panel .info-voice-btn:hover{background:rgba(16,185,129,.2)}
         .sim-legend{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.5);border-radius:8px;padding:6px 8px;font-size:.62rem;color:var(--text-secondary);z-index:5;pointer-events:none;display:flex;flex-direction:column;gap:2px}
 
-        /* Eclipse overlay */
-        .eclipse-overlay{position:absolute;inset:0;pointer-events:none;display:none;z-index:4;border-radius:50%}
-        .eclipse-overlay.show{display:block}
+        /* ═══ DEMO TABS ═══ */
+        .demo-tabs{display:flex;gap:6px;padding:0 10px 4px;background:var(--panel-bg2);border-bottom:1px solid var(--border-cyan);flex-shrink:0}
+        .demo-tab{padding:6px 14px;background:var(--btn-bg);border:1.5px solid var(--btn-border);border-radius:12px 12px 0 0;color:var(--text-secondary);font-size:.68rem;cursor:pointer;transition:all .25s;border-bottom:none;position:relative;white-space:nowrap}
+        .demo-tab:hover{background:rgba(6,182,212,.1);color:#fff}
+        .demo-tab.active{background:rgba(6,182,212,.18);color:var(--accent-cyan);border-color:rgba(6,182,212,.35);box-shadow:0 -2px 12px rgba(6,182,212,.1)}
+        .demo-tab:first-child.active{background:rgba(124,58,237,.18);color:#c4b5fd;border-color:rgba(124,58,237,.35);box-shadow:0 -2px 12px rgba(124,58,237,.1)}
+        .demo-panel{display:none;padding:8px 12px;background:var(--panel-bg3);border-bottom:1px solid var(--border-cyan);flex-shrink:0;gap:8px;align-items:center;flex-wrap:wrap}
+        .demo-panel.show{display:flex}
+        .demo-panel .demo-info{font-size:.62rem;color:var(--text-secondary);margin-right:6px}
+        .demo-panel .demo-step-btn{padding:4px 10px;background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.25);border-radius:6px;color:var(--btn-text);font-size:.65rem;cursor:pointer;transition:all .2s}
+        .demo-panel .demo-step-btn:hover{background:rgba(6,182,212,.3);color:var(--text-primary)}
+        .demo-panel .demo-step-btn.active{background:var(--accent-cyan);color:#000;border-color:var(--accent-cyan)}
+        .demo-panel input[type=range]{width:90px;accent-color:var(--accent-cyan)}
+        .demo-panel select{background:var(--btn-bg);border:1px solid var(--btn-border);border-radius:5px;color:var(--btn-text);font-size:.65rem;padding:2px 6px}
+        .demo-panel select option{background:var(--select-opt)}
+        .demo-legend{font-size:.62rem;color:var(--text-secondary);padding:4px 12px;background:var(--panel-bg2);border-bottom:1px solid var(--border-cyan);flex-shrink:0;display:flex;gap:12px;flex-wrap:wrap}
 
         /* ═══ RIGHT - AI AGENT ═══ */
         .right-inner{padding:10px 14px 14px;display:flex;flex-direction:column;gap:8px}
         .right-header{display:flex;align-items:center;gap:12px;padding:4px 0}
         .right-header h1{font-family:'Orbitron',sans-serif;font-size:1.3rem;font-weight:900;background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple),var(--accent-pink));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:titlePulse 4s ease-in-out infinite}
+        [data-theme="light"] .right-header h1{background:none;-webkit-text-fill-color:#3a3a3a;-webkit-background-clip:unset;background-clip:unset}
+        .theme-toggle{background:var(--btn-bg);border:1px solid var(--btn-border);border-radius:20px;padding:3px 10px;font-size:.72rem;cursor:pointer;color:var(--btn-text);transition:all .3s;white-space:nowrap}
+        .theme-toggle:hover{background:rgba(6,182,212,.2);border-color:var(--accent-cyan)}
         @keyframes titlePulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.15)}}
 
         /* ═══ ANIMATED AVATAR ═══ */
@@ -93,7 +129,7 @@
 
         /* ═══ NAV TABS ═══ */
         .nav-tabs{display:flex;gap:5px;flex-wrap:wrap}
-        .nav-tab{padding:7px 14px;border:1.5px solid transparent;border-radius:40px;background:linear-gradient(var(--bg-deep),var(--bg-deep)) padding-box,linear-gradient(135deg,var(--accent-cyan),var(--accent-purple)) border-box;color:#cbd5e1;font-size:.72rem;cursor:pointer;transition:all .25s;font-family:'Orbitron',sans-serif;white-space:nowrap}
+        .nav-tab{padding:7px 14px;border:1.5px solid transparent;border-radius:40px;background:linear-gradient(var(--bg-deep),var(--bg-deep)) padding-box,linear-gradient(135deg,var(--accent-cyan),var(--accent-purple)) border-box;color:var(--btn-text);font-size:.72rem;cursor:pointer;transition:all .25s;font-family:'Orbitron',sans-serif;white-space:nowrap}
         .nav-tab:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--glow-purple)}
         .nav-tab.active{background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple));color:#fff;box-shadow:0 4px 16px var(--glow-cyan)}
         .page{display:none}
@@ -102,7 +138,7 @@
 
         /* ═══ API KEY SETUP ═══ */
         .api-key-row{display:flex;align-items:center;gap:6px;padding:4px 0}
-        .api-key-input{flex:1;background:rgba(255,255,255,.04);border:1.5px solid rgba(124,58,237,.2);border-radius:20px;padding:6px 12px;color:#fff;font-size:.7rem;font-family:monospace;transition:all .3s}
+        .api-key-input{flex:1;background:var(--input-bg);border:1.5px solid var(--border-purple);border-radius:20px;padding:6px 12px;color:var(--text-primary);font-size:.7rem;font-family:monospace;transition:all .3s}
         .api-key-input:focus{outline:none;border-color:var(--accent-cyan)}
         .api-key-input::placeholder{color:#475569;font-size:.65rem}
         .api-status{font-size:.65rem;padding:3px 10px;border-radius:10px;white-space:nowrap}
@@ -112,7 +148,8 @@
         /* ═══ CHAT ═══ */
         .chat-box{background:var(--bg-card);border:1.5px solid rgba(124,58,237,.2);border-radius:16px;overflow:hidden}
         .chat-header-bar{background:linear-gradient(135deg,var(--accent-purple),var(--accent-cyan));padding:10px 14px;text-align:center}
-        .chat-header-bar h2{font-family:'Orbitron',sans-serif;font-size:.95rem}
+        [data-theme="light"] .chat-header-bar{background:linear-gradient(135deg,#b0b0b0,#909090)}
+        .chat-header-bar h2{font-family:'Orbitron',sans-serif;font-size:.95rem;color:#fff}
         .chat-messages{height:260px;overflow-y:auto;padding:10px}
         .chat-messages::-webkit-scrollbar{width:4px}
         .chat-messages::-webkit-scrollbar-thumb{background:var(--accent-purple);border-radius:2px}
@@ -121,26 +158,26 @@
         @keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
         .msg-bubble{max-width:75%;padding:9px 14px;border-radius:14px;font-size:.78rem;line-height:1.6;word-break:break-word}
         .msg-user .msg-bubble{background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple));border-bottom-right-radius:4px}
-        .msg-assistant .msg-bubble{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.07);border-bottom-left-radius:4px}
+        .msg-assistant .msg-bubble{background:var(--msg-assist-bg);border:1px solid var(--btn-border);border-bottom-left-radius:4px}
         .msg-avatar{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;margin:0 5px;flex-shrink:0}
         .msg-user .msg-avatar{order:2;background:linear-gradient(135deg,var(--accent-pink),var(--accent-purple))}
         .msg-assistant .msg-avatar{order:1;background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple))}
-        .chat-input-area{padding:8px 10px;background:rgba(0,0,0,.2);border-top:1px solid rgba(255,255,255,.05)}
+        .chat-input-area{padding:8px 10px;background:var(--panel-bg2);border-top:1px solid var(--border-cyan)}
         .chat-input-row{display:flex;gap:6px;align-items:center}
-        .chat-input{flex:1;background:rgba(255,255,255,.04);border:1.5px solid rgba(124,58,237,.2);border-radius:30px;padding:9px 14px;color:#fff;font-size:.78rem;font-family:'Noto Sans SC',sans-serif;transition:all .3s}
+        .chat-input{flex:1;background:var(--input-bg);border:1.5px solid var(--border-purple);border-radius:30px;padding:9px 14px;color:var(--text-primary);font-size:.78rem;font-family:'Noto Sans SC',sans-serif;transition:all .3s}
         .chat-input:focus{outline:none;border-color:var(--accent-cyan);box-shadow:0 0 16px var(--glow-cyan)}
         .chat-input::placeholder{color:#475569}
         .btn-icon{width:32px;height:32px;border-radius:50%;border:none;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
         .btn-send{background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple));color:#fff}
         .btn-send:hover{transform:scale(1.08);box-shadow:0 4px 14px var(--glow-cyan)}
-        .btn-mic{background:rgba(255,255,255,.08);color:var(--text-secondary);border:1.5px solid rgba(255,255,255,.1)}
+        .btn-mic{background:var(--btn-bg);color:var(--text-secondary);border:1.5px solid var(--btn-border)}
         .btn-mic:hover{background:rgba(6,182,212,.2);color:var(--accent-cyan)}
         .btn-mic.recording{background:#ef4444;color:#fff;animation:pulse-rec 1s infinite;border-color:#ef4444}
         @keyframes pulse-rec{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}50%{box-shadow:0 0 0 8px rgba(239,68,68,0)}}
-        .btn-speaker{background:rgba(255,255,255,.08);color:var(--text-secondary);border:1.5px solid rgba(255,255,255,.1)}
+        .btn-speaker{background:var(--btn-bg);color:var(--text-secondary);border:1.5px solid var(--btn-border)}
         .btn-speaker:hover{background:rgba(16,185,129,.2);color:var(--accent-emerald);border-color:var(--accent-emerald)}
         .suggestions{display:flex;flex-wrap:wrap;gap:5px;padding:6px 10px 8px;justify-content:center}
-        .sug-btn{background:rgba(255,255,255,.03);border:1px solid rgba(6,182,212,.2);border-radius:12px;padding:3px 10px;color:#cbd5e1;font-size:.68rem;cursor:pointer;transition:all .25s}
+        .sug-btn{background:var(--btn-bg);border:1px solid rgba(6,182,212,.2);border-radius:12px;padding:3px 10px;color:var(--btn-text);font-size:.68rem;cursor:pointer;transition:all .25s}
         .sug-btn:hover{background:rgba(6,182,212,.15);border-color:var(--accent-cyan)}
         .typing-dots{display:flex;gap:3px;padding:5px 0}
         .typing-dots span{width:6px;height:6px;background:var(--accent-cyan);border-radius:50%;animation:bounce 1.2s infinite}
@@ -152,22 +189,22 @@
         .quiz-setup{background:var(--bg-card);border:1px solid rgba(124,58,237,.15);border-radius:14px;padding:18px;text-align:center}
         .quiz-setup h3{font-family:'Orbitron',sans-serif;font-size:1rem;margin-bottom:4px}
         .quiz-modes{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0}
-        .quiz-mode-btn{padding:7px 18px;background:rgba(255,255,255,.03);border:1.5px solid rgba(6,182,212,.2);border-radius:12px;color:#cbd5e1;cursor:pointer;font-size:.78rem;transition:all .25s}
+        .quiz-mode-btn{padding:7px 18px;background:var(--btn-bg);border:1.5px solid rgba(6,182,212,.2);border-radius:12px;color:var(--btn-text);cursor:pointer;font-size:.78rem;transition:all .25s}
         .quiz-mode-btn:hover,.quiz-mode-btn.selected{background:rgba(6,182,212,.15);border-color:var(--accent-cyan);color:#fff}
         .btn-primary{padding:9px 30px;background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple));border:none;border-radius:30px;color:#fff;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .3s}
         .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px var(--glow-cyan)}
         .btn-primary:disabled{opacity:.5;pointer-events:none}
-        .quiz-card{background:var(--bg-card);border:1.5px solid rgba(124,58,237,.2);border-radius:16px;padding:18px;margin-bottom:8px}
+        .quiz-card{background:var(--bg-card);border:1.5px solid var(--border-purple);border-radius:16px;padding:18px;margin-bottom:8px}
         .quiz-progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:.75rem}
         .quiz-bar{flex:1;height:3px;background:rgba(255,255,255,.08);border-radius:2px;margin:0 8px;overflow:hidden}
         .quiz-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent-cyan),var(--accent-purple));border-radius:2px;transition:width .4s}
         .quiz-question{font-size:.9rem;font-weight:600;margin-bottom:12px;line-height:1.5}
-        .quiz-option{padding:11px 14px;background:rgba(255,255,255,.03);border:1.5px solid rgba(255,255,255,.06);border-radius:12px;cursor:pointer;margin-bottom:5px;font-size:.82rem;transition:all .25s}
+        .quiz-option{padding:11px 14px;background:var(--btn-bg);border:1.5px solid var(--btn-border);border-radius:12px;cursor:pointer;margin-bottom:5px;font-size:.82rem;transition:all .25s}
         .quiz-option:hover{background:rgba(6,182,212,.08);border-color:var(--accent-cyan)}
         .quiz-option.correct{background:rgba(16,185,129,.18)!important;border-color:var(--accent-emerald)!important}
         .quiz-option.wrong{background:rgba(239,68,68,.18)!important;border-color:#ef4444!important}
         .quiz-option.disabled{pointer-events:none;opacity:.7}
-        .quiz-exp{background:rgba(255,255,255,.03);border-radius:10px;padding:12px;margin-top:8px;display:none;font-size:.78rem;line-height:1.6}
+        .quiz-exp{background:var(--btn-bg);border-radius:10px;padding:12px;margin-top:8px;display:none;font-size:.78rem;line-height:1.6}
         .quiz-exp.show{display:block}
         .quiz-exp.ai-explain{background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);animation:fadeIn .5s}
         .reinforce-section{margin-top:12px;padding:12px;background:rgba(124,58,237,.08);border:1px dashed rgba(124,58,237,.3);border-radius:12px;display:none}
@@ -181,14 +218,33 @@
         .result-stat-label{font-size:.68rem;color:var(--text-secondary)}
 
         /* ═══ RECORDS ═══ */
-        .record-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:10px 14px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;font-size:.78rem}
+        .record-card{background:var(--bg-card);border:1px solid var(--btn-border);border-radius:12px;padding:10px 14px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;font-size:.78rem}
         .record-score{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;color:var(--accent-cyan)}
-        .btn-sm{padding:4px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;color:#cbd5e1;font-size:.68rem;cursor:pointer;transition:all .25s}
+        .btn-sm{padding:4px 10px;background:var(--btn-bg);border:1px solid var(--btn-border);border-radius:14px;color:var(--btn-text);font-size:.68rem;cursor:pointer;transition:all .25s}
         .btn-sm:hover{background:rgba(239,68,68,.12);border-color:#ef4444;color:#ef4444}
         .empty-state{text-align:center;padding:24px;color:var(--text-secondary);font-size:.8rem}
         .review-content{display:none}
         .review-content.show{display:block}
         .review-toggle.open{color:var(--accent-emerald)!important}
+
+        /* ═══ Learning Analysis ═══ */
+        .learning-analysis{background:var(--bg-card);border:1.5px solid rgba(124,58,237,.25);border-radius:14px;padding:16px;margin-top:10px}
+        .learning-analysis h3{font-family:'Orbitron',sans-serif;font-size:.85rem;margin-bottom:12px;color:var(--accent-cyan)}
+        .la-stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+        .la-stat{flex:1;min-width:60px;background:rgba(124,58,237,.08);border-radius:10px;padding:10px 8px;text-align:center}
+        .la-stat-val{font-size:1.1rem;font-weight:700;color:var(--accent-cyan);font-family:'Orbitron',sans-serif}
+        .la-stat-label{font-size:.6rem;color:var(--text-secondary);margin-top:2px}
+        .la-suggestions{padding:10px 12px;background:rgba(6,182,212,.06);border-radius:10px;border-left:3px solid var(--accent-cyan)}
+        .la-suggestions .la-sug-item{font-size:.72rem;color:#cbd5e1;line-height:1.7;margin-bottom:4px;padding-left:8px}
+        .la-suggestions .la-sug-item::before{content:'▸ ';color:var(--accent-cyan)}
+        .la-weak-tags{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0}
+        .la-weak-tag{padding:2px 8px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:8px;font-size:.62rem;color:#f87171}
+
+        /* ═══ Blind Spot Chart ═══ */
+        .blindspot-container{position:relative;width:100%;height:180px;background:rgba(0,0,0,.2);border-radius:12px;margin-top:10px;overflow:hidden}
+        .blindspot-container canvas{width:100%;height:100%}
+        .eval-btn{padding:6px 16px;background:linear-gradient(135deg,var(--accent-purple),var(--accent-cyan));border:none;border-radius:18px;color:#fff;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .3s;margin-top:10px;display:inline-block}
+        .eval-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--glow-purple)}
 
         /* ═══ MODAL ═══ */
         .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;justify-content:center;align-items:center;padding:20px}
@@ -205,7 +261,7 @@
         .detail-label{font-size:.6rem;color:#64748b;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px}
         .detail-value{font-size:.9rem;font-weight:700}
         .fun-facts h4{font-size:.9rem;margin-bottom:10px;color:var(--accent-cyan)}
-        .fact-item{background:rgba(255,255,255,.03);padding:8px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid var(--accent-purple);font-size:.78rem;line-height:1.6}
+        .fact-item{background:var(--btn-bg);padding:8px 12px;border-radius:8px;margin-bottom:6px;border-left:3px solid var(--accent-purple);font-size:.78rem;line-height:1.6}
         .modal-knowledge{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:10px 14px;margin-top:12px;font-size:.78rem;line-height:1.7;color:var(--accent-emerald)}
         .modal-voice-btn{display:inline-block;margin-top:8px;padding:5px 14px;background:rgba(16,185,129,.15);border:1px solid var(--accent-emerald);color:var(--accent-emerald);border-radius:14px;cursor:pointer;font-size:.72rem;transition:all .25s}
         .modal-voice-btn:hover{background:rgba(16,185,129,.25)}
@@ -232,7 +288,7 @@
         <div class="sim-header">
             <div class="sim-header-row">
                 <span class="sim-title">☀ LIVE SOLAR SYSTEM</span>
-                <div class="sim-date" id="simDate"></div>
+                <div class="sim-date" id="simDate" style="cursor:pointer" title="点击显示当前行星实时位置">👆 <span id="simDateText"></span></div>
                 <div class="sim-season" id="simSeason"></div>
                 <div class="sim-controls" style="display:flex;gap:3px;align-items:center">
                     <button class="sim-btn" id="btnPause" title="暂停/播放">⏯</button>
@@ -244,45 +300,91 @@
                     </div>
                 </div>
             </div>
-            <div class="sim-header-row">
-                <div style="display:flex;gap:3px;flex-wrap:wrap;align-items:center">
-                    <button class="sim-btn active" data-filter="all">全部</button>
-                    <button class="sim-btn" data-filter="inner">内行</button>
-                    <button class="sim-btn" data-filter="outer">外行</button>
-                    <button class="sim-btn" data-filter="rocky">岩石</button>
-                    <button class="sim-btn" data-filter="gas">气态</button>
-                    <span style="font-size:.62rem;color:#64748b;margin:0 2px">|</span>
-                    <div class="sim-focus">
-                        <select id="focusSelect">
-                            <option value="">🔍 聚焦行星...</option>
-                            <option value="mercury">水星</option>
-                            <option value="venus">金星</option>
-                            <option value="earth">地球</option>
-                            <option value="mars">火星</option>
-                            <option value="jupiter">木星</option>
-                            <option value="saturn">土星</option>
-                            <option value="uranus">天王星</option>
-                            <option value="neptune">海王星</option>
-                            <option value="pluto">冥王星</option>
-                        </select>
-                    </div>
+        </div>
+        <!-- Demo Tabs -->
+        <div class="demo-tabs" id="demoTabs">
+            <button class="demo-tab active" data-demo="sim">🌌 太阳系演示</button>
+            <button class="demo-tab" data-demo="solar">🌑 日食演示</button>
+            <button class="demo-tab" data-demo="lunar">🌕 月食演示</button>
+            <button class="demo-tab" data-demo="transit">🪐 凌日演示</button>
+        </div>
+        <!-- Solar System Control Panel (only visible in sim mode) -->
+        <div class="demo-panel show" id="simControlPanel">
+            <div style="display:flex;gap:3px;flex-wrap:wrap;align-items:center">
+                <button class="sim-btn active" data-filter="all">全部</button>
+                <button class="sim-btn" data-filter="inner">内行</button>
+                <button class="sim-btn" data-filter="outer">外行</button>
+                <button class="sim-btn" data-filter="rocky">岩石</button>
+                <button class="sim-btn" data-filter="gas">气态</button>
+                <span style="font-size:.62rem;color:#64748b;margin:0 2px">|</span>
+                <div class="sim-focus">
+                    <select id="focusSelect">
+                        <option value="">聚焦行星...</option>
+                        <option value="mercury">水星</option>
+                        <option value="venus">金星</option>
+                        <option value="earth">地球</option>
+                        <option value="mars">火星</option>
+                        <option value="jupiter">木星</option>
+                        <option value="saturn">土星</option>
+                        <option value="uranus">天王星</option>
+                        <option value="neptune">海王星</option>
+                        <option value="pluto">冥王星</option>
+                    </select>
                 </div>
+                <span style="font-size:.62rem;color:#64748b;margin:0 2px">|</span>
+                <button class="sim-btn toggle-on" id="btnShowOrbits" data-layer="orbits">轨道</button>
+                <button class="sim-btn toggle-on" id="btnShowLabels" data-layer="labels">名称</button>
+                <button class="sim-btn toggle-on" id="btnShowKnowledge" data-layer="knowledge">知识点</button>
+                <span style="font-size:.62rem;color:#64748b;margin:0 2px">|</span>
+                <button class="sim-btn" id="btnShowPluto" data-layer="pluto">冥王星</button>
+                <button class="sim-btn" id="btnShowAsteroids" data-layer="asteroids">小行星带</button>
+                <button class="sim-btn" id="btnShowComet" data-layer="comet">哈雷彗星</button>
             </div>
-            <div class="sim-header-row">
-                <div style="display:flex;gap:3px;flex-wrap:wrap;align-items:center">
-                    <button class="sim-btn toggle-on" id="btnShowOrbits" data-layer="orbits">轨道</button>
-                    <button class="sim-btn toggle-on" id="btnShowLabels" data-layer="labels">名称</button>
-                    <button class="sim-btn toggle-on" id="btnShowKnowledge" data-layer="knowledge">知识点</button>
-                    <span style="font-size:.62rem;color:#64748b;margin:0 2px">|</span>
-                    <button class="sim-btn" id="btnShowPluto" data-layer="pluto">冥王星</button>
-                    <button class="sim-btn" id="btnShowAsteroids" data-layer="asteroids">小行星带</button>
-                    <button class="sim-btn" id="btnShowComet" data-layer="comet">☄哈雷彗星</button>
-                    <span style="font-size:.62rem;color:#64748b;margin:0 2px">|</span>
-                    <button class="sim-btn" id="btnEclipseSolar" data-layer="solarEclipse">🌑日食</button>
-                    <button class="sim-btn" id="btnEclipseLunar" data-layer="lunarEclipse">🌕月食</button>
-                    <button class="sim-btn" id="btnTransit" data-layer="transit">凌日</button>
-                </div>
-            </div>
+        </div>
+        <!-- Solar Eclipse Panel -->
+        <div class="demo-panel" id="solarDemoPanel">
+            <span class="demo-info">日食：月球运行到太阳与地球之间，月球遮挡太阳</span>
+            <button class="demo-step-btn" data-step="phase0">初亏</button>
+            <button class="demo-step-btn" data-step="phase1">食既</button>
+            <button class="demo-step-btn" data-step="phase2">食甚</button>
+            <button class="demo-step-btn" data-step="phase3">生光</button>
+            <button class="demo-step-btn" data-step="phase4">复圆</button>
+            <button class="demo-step-btn active" data-step="autoPlay">⏯ 自动</button>
+            <span style="font-size:.62rem;color:var(--text-secondary)">| 食分</span>
+            <input type="range" id="solarPhaseSlider" min="0" max="100" value="0" style="width:70px">
+            <span style="font-size:.62rem;color:var(--accent-cyan)" id="solarPhaseVal">0%</span>
+        </div>
+        <!-- Lunar Eclipse Panel -->
+        <div class="demo-panel" id="lunarDemoPanel">
+            <span class="demo-info">月食：地球运行到太阳与月球之间，地球影子挡住月球</span>
+            <button class="demo-step-btn" data-step="phase0">初亏</button>
+            <button class="demo-step-btn" data-step="phase1">食既</button>
+            <button class="demo-step-btn" data-step="phase2">食甚</button>
+            <button class="demo-step-btn" data-step="phase3">生光</button>
+            <button class="demo-step-btn" data-step="phase4">复圆</button>
+            <button class="demo-step-btn active" data-step="autoPlay">⏯ 自动</button>
+            <span style="font-size:.62rem;color:var(--text-secondary)">| 食分</span>
+            <input type="range" id="lunarPhaseSlider" min="0" max="100" value="0" style="width:70px">
+            <span style="font-size:.62rem;color:var(--accent-cyan)" id="lunarPhaseVal">0%</span>
+        </div>
+        <!-- Transit Panel -->
+        <div class="demo-panel" id="transitDemoPanel">
+            <span class="demo-info">🪐 ☀️ 凌日：行星从太阳前方经过</span>
+            <select id="transitPlanetSelect">
+                <option value="mercury">水星凌日</option>
+                <option value="venus">金星凌日</option>
+            </select>
+            <button class="demo-step-btn" data-step="enter">▶ 进入</button>
+            <button class="demo-step-btn" data-step="center">▶ 居中</button>
+            <button class="demo-step-btn" data-step="exit">▶ 离开</button>
+            <button class="demo-step-btn" data-step="auto">▶ 自动演示</button>
+            <span style="font-size:.62rem;color:var(--text-secondary)">| 位置</span>
+            <input type="range" id="transitPosSlider" min="0" max="100" value="50" style="width:80px">
+            <span style="font-size:.62rem;color:var(--accent-cyan)" id="transitPosVal">50%</span>
+        </div>
+        <!-- Demo Legend -->
+        <div class="demo-legend" id="demoLegend" style="display:none">
+            <span id="demoDescText"></span>
         </div>
         <canvas id="solarCanvas"></canvas>
         <div class="planet-info-panel" id="infoPanel">
@@ -313,6 +415,7 @@
 Powered by DeepSeek</div>
                 </div>
                 <h1>🌌 太阳系 · 智能助手</h1>
+                <button class="theme-toggle" id="themeToggle" title="切换深色/浅色主题">🌙 浅色</button>
             </div>
 
             <!-- API Key -->
@@ -374,7 +477,8 @@ Powered by DeepSeek</div>
                 <h3 style="font-family:'Orbitron',sans-serif;font-size:.9rem;margin-bottom:8px">📊 测验记录</h3>
                 <div id="quizRecords" style="margin-bottom:14px"></div>
                 <h3 style="font-family:'Orbitron',sans-serif;font-size:.9rem;margin-bottom:8px">💬 对话存档</h3>
-                <div id="chatRecords"></div>
+                <div id="chatRecords" style="margin-bottom:14px"></div>
+                <div class="learning-analysis" id="learningAnalysis"></div>
             </div>
         </div>
     </div>
@@ -409,6 +513,10 @@ const planetsData = [
 
 // Pluto data
 const plutoData = {id:'pluto',name:'冥王星',nameEn:'PLUTO',cssClass:'mini-pluto',color:'#d4a574',order:9,orbitRadius:870,orbitSpeed:0.004,realSize:0.186,description:'曾经的第九大行星，2006年被重新分类为"矮行星"。',facts:['2006年降级矮行星','5颗卫星','氮冰覆盖','新视野号2015飞掠','轨道倾角17°'],diameter:'2,377 km',distance:'59亿 km',dayLength:'6.4 地球日',yearLength:'248 地球年',moons:5,temperature:'约 -230°C',type:'矮行星',textbook:'冥王星2006年被IAU重新定义为矮行星，因为它未能清除其轨道附近的其他天体。'};
+// Pluto elliptical orbit parameters (e=0.2488, perihelion inside Neptune's orbit)
+// Scaled: a=870 (same as orbitRadius), e=0.25
+// perihelion = 870*(1-0.25) = 652 (inside Neptune 745), aphelion = 870*(1+0.25) = 1087
+const plutoOrbit = { a: 870, e: 0.25, periAngle: Math.PI * 0.7 };
 
 // ═══════════════ RESIZABLE DIVIDER ═══════════════
 const resizeHandle=document.getElementById('resizeHandle');
@@ -432,13 +540,12 @@ const simCanvas=document.getElementById('solarCanvas'),simCtx=simCanvas.getConte
 let simW,simH,cx,cy,speed=1,zoom=1,panX=0,panY=0,isPanning=false,lastMouse={x:0,y:0};
 let simPlanets=[];
 let simPaused=false,simTime=0;
-const SUN_X_FACTOR=0.22;
+const SUN_X_FACTOR=0.5; // Sun centered horizontally
 const BASE_PLANET_RADIUS=6;
 
 // Layer toggles
 let showOrbits=true,showLabels=true,showKnowledge=true,showPluto=false;
 let showAsteroids=false,showComet=false;
-let eclipseMode=null; // null | 'solar' | 'lunar' | 'transit'
 let focusPlanetId=null;
 
 // Moon state
@@ -451,18 +558,22 @@ let rotationAngles={};
 let asteroidParticles=[];
 function genAsteroids(){
     asteroidParticles=[];
-    for(let i=0;i<200;i++){
+    for(let i=0;i<300;i++){
         const angle=Math.random()*Math.PI*2;
         const minR=245,maxR=320; // between Mars (215) and Jupiter (355)
         const r=minR+Math.random()*(maxR-minR)+(Math.random()-.5)*15;
-        asteroidParticles.push({angle,radius:r,size:.4+Math.random()*1.6,speed:.003+Math.random()*.012,opacity:.15+Math.random()*.35});
+        asteroidParticles.push({angle,radius:r,size:.8+Math.random()*2.2,speed:.003+Math.random()*.012,opacity:.25+Math.random()*.5});
     }
 }
 genAsteroids();
 
 // Comet state (Halley's Comet with elliptical orbit)
+// Real Halley: a=17.8AU, e=0.967, but we scale to fit the display
+// Perihelion ~0.59AU (inside Venus orbit), aphelion ~35AU (beyond Neptune)
+// Scaled: perihelion at ~100px (inside Venus orbit 130), aphelion at ~780px (beyond Neptune 745)
+// Using a=440, e=0.77: perihelion=440*(1-0.77)=101, aphelion=440*(1+0.77)=779
 let cometAngle=0;
-const cometOrbit = { a: 520, e: 0.967, periAngle: Math.PI * 0.3 }; // semi-major axis, eccentricity
+const cometOrbit = { a: 440, e: 0.77, periAngle: Math.PI * 0.25 };
 
 function initSimPlanets(){
     simPlanets=planetsData.map(p=>({
@@ -473,35 +584,106 @@ function initSimPlanets(){
     planetsData.forEach(p=>rotationAngles[p.id]=Math.random()*Math.PI*2);
 }
 
+// Calculate approximate real orbital angles for planets based on current date
+// Uses mean anomaly approximation: angle = (2π / orbital_period_days) * days_since_J2000
+// J2000 epoch: January 1, 2000, 12:00 TT
+function calcRealPlanetAngles(){
+    const now=new Date();
+    // Days since J2000.0 (Jan 1 2000 12:00 UT)
+    const j2000=new Date(Date.UTC(2000,0,1,12,0,0));
+    const daysSinceJ2000=(now.getTime()-j2000.getTime())/(86400000);
+    // Orbital periods in Earth days
+    const periods={mercury:87.97,venus:224.7,earth:365.25,mars:687.0,jupiter:4332.6,saturn:10759.2,uranus:30688.5,neptune:60182.0,pluto:90560.0};
+    // Mean longitude at J2000 (degrees) - approximate values
+    const L0={mercury:252.25,venus:181.98,earth:100.46,mars:355.45,jupiter:34.40,saturn:49.94,uranus:313.23,neptune:304.88,pluto:238.93};
+    const angles={};
+    planetsData.forEach(p=>{
+        const period=periods[p.id]||365.25;
+        const l0=L0[p.id]||0;
+        // Mean longitude = L0 + (360/period)*days
+        const meanLong=l0+(360/period)*daysSinceJ2000;
+        angles[p.id]=(meanLong%360)*Math.PI/180;
+    });
+    return angles;
+}
+
+function setRealTimePositions(){
+    const angles=calcRealPlanetAngles();
+    simPlanets.forEach(p=>{
+        if(angles[p.id]!==undefined)p.angle=angles[p.id];
+    });
+    // Also set Pluto
+    if(angles.pluto!==undefined){
+        // Pluto angle is derived from simPlanets[0] angle, so we store it
+        window._plutoRealAngle=angles.pluto;
+    }
+    // Set moon angle based on current date
+    const now=new Date();
+    moonAngle=(now.getDate()/30)*Math.PI*2+now.getHours()/24*Math.PI*2;
+    // Reset view
+    zoom=1;panX=0;panY=0;
+}
+
+// Click on date to show real-time positions
+document.getElementById('simDate').addEventListener('click',function(){
+    if(currentDemo)return; // Only in sim mode
+    setRealTimePositions();
+    // Visual feedback
+    this.style.color='var(--accent-emerald)';
+    setTimeout(()=>{this.style.color=''},1500);
+});
+
 function getPlutoSimObj(){
     return {
-        ...plutoData,angle:simPlanets.length>0?simPlanets[0].angle-1.2:0,
+        ...plutoData,angle:window._plutoRealAngle!==undefined?window._plutoRealAngle:(simPlanets.length>0?simPlanets[0].angle-1.2:0),
         radius:plutoData.orbitRadius,speed:plutoData.orbitSpeed/60,visible:true
     };
 }
+let plutoSimAngle=Math.random()*Math.PI*2;
 
 initSimPlanets();
 
+// Theme toggle
+const themeToggle=document.getElementById('themeToggle');
+let currentTheme=localStorage.getItem('solarTheme')||'dark';
+function applyTheme(theme){
+    currentTheme=theme;
+    document.documentElement.setAttribute('data-theme',theme);
+    localStorage.setItem('solarTheme',theme);
+    themeToggle.textContent=theme==='light'?'☀️ 深色':'🌙 浅色';
+}
+applyTheme(currentTheme);
+themeToggle.addEventListener('click',()=>applyTheme(currentTheme==='dark'?'light':'dark'));
+
 function resizeSim(){
-    const rect=simCanvas.parentElement.getBoundingClientRect();
-    simW=simCanvas.width=rect.width;
-    simH=simCanvas.height=rect.height-90; // account for 3-row header
-    cx=simW*SUN_X_FACTOR;cy=simH/2;
+    // Use canvas element's own offsetTop within parent to compute available height
+    const parentRect=simCanvas.parentElement.getBoundingClientRect();
+    simW=simCanvas.width=parentRect.width;
+    const canvasTop=simCanvas.offsetTop||0;
+    simH=simCanvas.height=Math.max(260,parentRect.bottom-parentRect.top-canvasTop-4);
+    cx=simW/2;cy=simH/2;
 }
 resizeSim();window.addEventListener('resize',()=>{resizeSim();drawSim()});
 
 function worldToScreen(wx,wy){return{x:(wx-panX)*zoom+cx,y:(wy-panY)*zoom+cy}}
 function getPlanetScreenRadius(realSize){return Math.max(2,BASE_PLANET_RADIUS*realSize*zoom)}
+function lblColor(alpha){return currentTheme==='light'?`rgba(30,30,30,${alpha})`:`rgba(255,255,255,${alpha})`}
+function lblColorWarm(alpha){return currentTheme==='light'?`rgba(120,80,0,${alpha})`:`rgba(255,240,180,${alpha})`}
 
 function drawStars(){
     // Twinkling 2D starfield with depth
+    const isLight=currentTheme==='light';
     const seed=42;
     for(let i=0;i<180;i++){
         const sx=(i*7919+seed*31)%simW,sy=(i*6271+seed*17)%simH;
         const twinkle=.4+.6*Math.abs(Math.sin(Date.now()*.001+i*.7+Math.sin(i*3.1)*2));
         const depth=(i%3)+1;
         const size=depth===3?2:1;
-        simCtx.fillStyle=`rgba(255,255,255,${(.08+.15*twinkle)/depth})`;
+        if(isLight){
+            simCtx.fillStyle=`rgba(60,60,80,${(.06+.12*twinkle)/depth})`;
+        }else{
+            simCtx.fillStyle=`rgba(255,255,255,${(.08+.15*twinkle)/depth})`;
+        }
         simCtx.beginPath();simCtx.arc(sx,sy,size*.6,0,Math.PI*2);simCtx.fill();
     }
 }
@@ -527,7 +709,7 @@ function drawSun(){
     simCtx.fillStyle=sg;simCtx.fill();
     // Sun label
     if(showLabels){
-        simCtx.fillStyle='rgba(255,240,180,.9)';simCtx.font=`bold ${Math.max(8,10*zoom)}px "Noto Sans SC"`;
+        simCtx.fillStyle=lblColorWarm(.9);simCtx.font=`bold ${Math.max(8,10*zoom)}px "Noto Sans SC"`;
         simCtx.textAlign='center';simCtx.fillText('太阳',pos.x,pos.y-sunR-8);
     }
     // Knowledge tag for sun
@@ -540,7 +722,7 @@ function drawSun(){
 function drawOrbit(radius,color,dashed){
     const pos=worldToScreen(0,0);const r=radius*zoom;
     simCtx.beginPath();simCtx.arc(pos.x,pos.y,r,0,Math.PI*2);
-    simCtx.strokeStyle=color||'rgba(255,255,255,.06)';simCtx.lineWidth=.8;
+    simCtx.strokeStyle=color||(currentTheme==='light'?'rgba(0,0,0,.12)':'rgba(255,255,255,.06)');simCtx.lineWidth=.8;
     if(dashed)simCtx.setLineDash([3,6]);else simCtx.setLineDash([]);
     simCtx.stroke();simCtx.setLineDash([]);
 }
@@ -595,19 +777,35 @@ function drawAsteroidBelt(){
         const ax=Math.cos(a.angle)*a.radius,ay=Math.sin(a.angle)*a.radius;
         const pos=worldToScreen(ax,ay);
         if(pos.x<0||pos.x>simW||pos.y<0||pos.y>simH)return;
-        simCtx.fillStyle=`rgba(180,180,190,${a.opacity})`;
-        simCtx.beginPath();simCtx.arc(pos.x,pos.y,a.size*zoom*.5,0,Math.PI*2);simCtx.fill();
+        const sz=Math.max(0.5,a.size*zoom*.6);
+        simCtx.fillStyle=`rgba(200,195,180,${a.opacity})`;
+        simCtx.beginPath();simCtx.arc(pos.x,pos.y,sz,0,Math.PI*2);simCtx.fill();
     });
 }
 
 function drawSim(){
-    simCtx.fillStyle='#050e1a';simCtx.fillRect(0,0,simW,simH);
+    simCtx.fillStyle=currentTheme==='light'?'#c8c8c8':'#050e1a';simCtx.fillRect(0,0,simW,simH);
     drawStars();
 
     // Draw orbits
     if(showOrbits){
         simPlanets.forEach(p=>{if(p.visible)drawOrbit(p.radius)});
-        if(showPluto)drawOrbit(plutoData.orbitRadius,'rgba(255,255,255,.04)',true);
+        if(showPluto){
+            // Draw Pluto's elliptical orbit
+            simCtx.beginPath();
+            for(let i=0;i<=360;i++){
+                const ang=i*Math.PI/180;
+                const theta=ang-plutoOrbit.periAngle;
+                const rO=plutoOrbit.a*(1-plutoOrbit.e*plutoOrbit.e)/(1+plutoOrbit.e*Math.cos(theta));
+                const ox=Math.cos(ang)*rO,oy=Math.sin(ang)*rO;
+                const opos=worldToScreen(ox,oy);
+                if(i===0)simCtx.moveTo(opos.x,opos.y);
+                else simCtx.lineTo(opos.x,opos.y);
+            }
+            simCtx.closePath();
+            simCtx.strokeStyle='rgba(212,165,116,.1)';simCtx.lineWidth=1;
+            simCtx.setLineDash([4,6]);simCtx.stroke();simCtx.setLineDash([]);
+        }
     }
 
     // Asteroid belt
@@ -681,7 +879,7 @@ function drawSim(){
 
         // Planet label
         if(showLabels){
-            simCtx.fillStyle='rgba(255,255,255,.65)';simCtx.font=`${Math.max(7,9*zoom)}px "Noto Sans SC"`;
+            simCtx.fillStyle=lblColor(.65);simCtx.font=`${Math.max(7,9*zoom)}px "Noto Sans SC"`;
             simCtx.textAlign='center';simCtx.fillText(p.name,pos.x,pos.y-r-7);
         }
 
@@ -693,62 +891,69 @@ function drawSim(){
             simCtx.fillText(knowTexts[p.id]||'',pos.x,pos.y-r-18);
         }
 
-        // Eclipse solar simulation
-        if(eclipseMode==='solar'&&p.id==='earth'){
-            const mx=pos.x+Math.cos(moonAngle)*r*4,my=pos.y+Math.sin(moonAngle)*r*4;
-            const distToSun=Math.hypot(mx-0,my-0);
-            const moonSunAngle=Math.atan2(my-0,mx-0);
-            const earthSunAngle=Math.atan2(pos.y-0,pos.x-0);
-            const angleDiff=Math.abs(moonSunAngle-earthSunAngle);
-            if(angleDiff<.08){
-                // Dark overlay on part of the screen
-                const sunPos=worldToScreen(0,0);
-                const shadowR=Math.min(BASE_PLANET_RADIUS*24*zoom,75*zoom)*2.5;
-                simCtx.fillStyle='rgba(0,0,0,.3)';
-                simCtx.beginPath();simCtx.arc(sunPos.x,sunPos.y,shadowR,0,Math.PI*2);simCtx.fill();
-            }
-        }
-
         p._screenPos=pos;p._screenR=r;
     });
 
     // Pluto
     if(showPluto){
-        const plObj=getPlutoSimObj();
-        plObj.angle+=(simPaused?0:plObj.speed*speed);
-        const px=Math.cos(plObj.angle)*plObj.radius,py=Math.sin(plObj.angle)*plObj.radius;
+        if(!simPaused)plutoSimAngle+=plutoData.orbitSpeed/60*speed;
+        // Use real angle if set
+        if(window._plutoRealAngle!==undefined)plutoSimAngle=window._plutoRealAngle;
+        // Elliptical orbit position
+        const theta=plutoSimAngle-plutoOrbit.periAngle;
+        const rOrbit=plutoOrbit.a*(1-plutoOrbit.e*plutoOrbit.e)/(1+plutoOrbit.e*Math.cos(theta));
+        const px=Math.cos(plutoSimAngle)*rOrbit,py=Math.sin(plutoSimAngle)*rOrbit;
         const pos=worldToScreen(px,py);
-        const r=getPlanetScreenRadius(plObj.realSize);
+        const r=getPlanetScreenRadius(plutoData.realSize);
         simCtx.beginPath();simCtx.arc(pos.x,pos.y,r,0,Math.PI*2);
         const pg=simCtx.createRadialGradient(pos.x-r*.25,pos.y-r*.25,0,pos.x,pos.y,r);
         pg.addColorStop(0,'rgba(250,220,190,1)');pg.addColorStop(.5,'rgba(180,140,100,1)');pg.addColorStop(1,'rgba(120,100,70,1)');
         simCtx.fillStyle=pg;simCtx.fill();
         if(showLabels){
-            simCtx.fillStyle='rgba(255,255,255,.45)';simCtx.font=`${Math.max(6,8*zoom)}px "Noto Sans SC"`;
+            simCtx.fillStyle=lblColor(.45);simCtx.font=`${Math.max(6,8*zoom)}px "Noto Sans SC"`;
             simCtx.textAlign='center';simCtx.fillText('冥王星',pos.x,pos.y-r-5);
         }
         if(showKnowledge){
-            simCtx.fillStyle='rgba(255,255,255,.25)';simCtx.font=`${Math.max(5,6*zoom)}px "Noto Sans SC"`;
+            simCtx.fillStyle=lblColor(.25);simCtx.font=`${Math.max(5,6*zoom)}px "Noto Sans SC"`;
             simCtx.textAlign='center';simCtx.fillText('矮行星',pos.x,pos.y-r-15);
         }
     }
 
     // Halley's Comet
-    if(showComet&&!simPaused){
-        cometAngle+=.0006*speed;
-        // Elliptical orbit: r = a(1-e²)/(1+e*cos(θ))
+    if(showComet){
         const e=cometOrbit.e,a=cometOrbit.a;
+        // Draw elliptical orbit path
+        if(showOrbits){
+            simCtx.beginPath();
+            for(let i=0;i<=360;i++){
+                const ang=i*Math.PI/180;
+                const theta=ang-cometOrbit.periAngle;
+                const rOrbit=a*(1-e*e)/(1+e*Math.cos(theta));
+                const ox=Math.cos(ang)*rOrbit,oy=Math.sin(ang)*rOrbit;
+                const opos=worldToScreen(ox,oy);
+                if(i===0)simCtx.moveTo(opos.x,opos.y);
+                else simCtx.lineTo(opos.x,opos.y);
+            }
+            simCtx.closePath();
+            simCtx.strokeStyle='rgba(150,200,255,.08)';simCtx.lineWidth=1;
+            simCtx.setLineDash([6,8]);simCtx.stroke();simCtx.setLineDash([]);
+        }
+        // Update comet position
+        if(!simPaused){
+            cometAngle+=.0006*speed;
+        }
+        // Calculate position using true anomaly
         const theta=cometAngle-cometOrbit.periAngle;
         const rOrbit=a*(1-e*e)/(1+e*Math.cos(theta));
         const cxPos=Math.cos(cometAngle)*rOrbit,cyPos=Math.sin(cometAngle)*rOrbit;
         const pos=worldToScreen(cxPos,cyPos);
-        if(pos.x>0&&pos.x<simW&&pos.y>0&&pos.y<simH){
-            // Direction away from sun
-            const dirAway=Math.atan2(pos.y-worldToScreen(0,0).y,pos.x-worldToScreen(0,0).x);
+        if(pos.x>-50&&pos.x<simW+50&&pos.y>-50&&pos.y<simH+50){
+            // Direction away from sun (tail always points away from sun)
+            const dirAway=Math.atan2(cyPos,cxPos);
             drawCometTrail(pos.x,pos.y,dirAway,35);
             if(showLabels){
-                simCtx.fillStyle='rgba(255,255,255,.5)';simCtx.font=`${Math.max(6,7*zoom)}px "Noto Sans SC"`;
-                simCtx.textAlign='center';simCtx.fillText('☄哈雷',pos.x,pos.y-10);
+                simCtx.fillStyle=lblColor(.6);simCtx.font=`${Math.max(6,7*zoom)}px "Noto Sans SC"`;
+                simCtx.textAlign='center';simCtx.fillText('哈雷彗星',pos.x,pos.y-12);
             }
         }
     }
@@ -763,6 +968,7 @@ function hexToRgb(h){const r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),1
 function hexToRgbArr(h){return[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)]}
 
 function findPlanetAt(sx,sy){
+    if(currentDemo)return null; // No planet detection in demo mode
     // Check regular planets
     for(let i=simPlanets.length-1;i>=0;i--){
         const p=simPlanets[i];if(!p.visible||!p._screenPos)continue;
@@ -770,11 +976,12 @@ function findPlanetAt(sx,sy){
     }
     // Check Pluto
     if(showPluto){
-        const plObj=getPlutoSimObj();
-        const px=Math.cos(plObj.angle)*plObj.radius,py=Math.sin(plObj.angle)*plObj.radius;
+        const theta=plutoSimAngle-plutoOrbit.periAngle;
+        const rOrbit=plutoOrbit.a*(1-plutoOrbit.e*plutoOrbit.e)/(1+plutoOrbit.e*Math.cos(theta));
+        const px=Math.cos(plutoSimAngle)*rOrbit,py=Math.sin(plutoSimAngle)*rOrbit;
         const pos=worldToScreen(px,py);
-        const r=getPlanetScreenRadius(plObj.realSize);
-        if(Math.hypot(sx-pos.x,sy-pos.y)<r+8)return plObj;
+        const r=getPlanetScreenRadius(plutoData.realSize);
+        if(Math.hypot(sx-pos.x,sy-pos.y)<r+8)return {...plutoData,angle:plutoSimAngle,radius:rOrbit,speed:plutoData.orbitSpeed/60,visible:true};
     }
     return null;
 }
@@ -799,6 +1006,8 @@ window.addEventListener('mouseup',()=>{isPanning=false;simCanvas.style.cursor='g
 window.addEventListener('mousemove',e=>{
     if(isPanning){panX-=(e.clientX-lastMouse.x)/zoom;panY-=(e.clientY-lastMouse.y)/zoom;lastMouse={x:e.clientX,y:e.clientY}}
     if(isResizing)return;
+    // Only detect planets in sim mode
+    if(currentDemo){simCanvas.style.cursor=isPanning?'grabbing':'grab';document.getElementById('planetTooltip').style.display='none';return}
     const rect=simCanvas.getBoundingClientRect();
     const hp=findPlanetAt(e.clientX-rect.left,e.clientY-rect.top);
     simCanvas.style.cursor=hp?'pointer':(isPanning?'grabbing':'grab');
@@ -807,6 +1016,7 @@ window.addEventListener('mousemove',e=>{
     else tt.style.display='none';
 });
 simCanvas.addEventListener('click',e=>{
+    if(currentDemo)return; // No planet click in demo mode
     const rect=simCanvas.getBoundingClientRect();
     const hp=findPlanetAt(e.clientX-rect.left,e.clientY-rect.top);
     if(hp){showInfoPanel(hp);openPlanetModal(hp.id)}
@@ -849,38 +1059,905 @@ document.querySelectorAll('.sim-btn[data-layer]').forEach(b=>{
             case'pluto':showPluto=!isOn;if(!isOn)document.getElementById('infoPanel').style.display='none';break;
             case'asteroids':showAsteroids=!isOn;if(!isOn)genAsteroids();break;
             case'comet':showComet=!isOn;if(!isOn)cometAngle=Math.random()*Math.PI*2;break;
-            case'solarEclipse':
-                if(!isOn){eclipseMode='solar';document.getElementById('btnEclipseLunar').classList.remove('toggle-on');document.getElementById('btnTransit').classList.remove('toggle-on')}
-                else eclipseMode=null;
-                break;
-            case'lunarEclipse':
-                if(!isOn){eclipseMode='lunar';document.getElementById('btnEclipseSolar').classList.remove('toggle-on');document.getElementById('btnTransit').classList.remove('toggle-on')}
-                else eclipseMode=null;
-                break;
-            case'transit':
-                if(!isOn){eclipseMode='transit';document.getElementById('btnEclipseSolar').classList.remove('toggle-on');document.getElementById('btnEclipseLunar').classList.remove('toggle-on')}
-                else eclipseMode=null;
-                break;
         }
     });
 });
 
-// Play/Pause
+// ═══════════════ DEMO MODE MANAGEMENT (4-Tab System) ═══════════════
+let currentDemo=null; // null | 'solar' | 'lunar' | 'transit' (null=sim mode)
+let demoPhase='manual';
+let demoAnimId=null;
+let solarSpeed=2,solarPaused=false,solarViewAngle=0,solarAnimTime=0,solarPhaseOverride=0,solarAutoPlay=true;
+let lunarSpeed=2,lunarPaused=false,lunarPhaseOverride=0,lunarAnimTime=0,lunarAutoPlay=true;
+let transitPos=50,transitPlanetType='venus';
+
+// Demo tab click (4 tabs: sim, solar, lunar, transit)
+document.querySelectorAll('.demo-tab').forEach(tab=>{
+    tab.addEventListener('click',function(){
+        const demo=this.dataset.demo;
+        if(currentDemo===demo&&demo!=='sim'){// Deselect non-sim → go back to sim
+            currentDemo=null;
+            document.querySelectorAll('.demo-tab').forEach(t=>t.classList.remove('active'));
+            document.querySelector('.demo-tab[data-demo="sim"]').classList.add('active');
+            document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('show'));
+            document.getElementById('simControlPanel').classList.add('show');
+            document.getElementById('demoLegend').style.display='none';
+            stopDemoAnimation();zoom=1;panX=0;panY=0;
+            setTimeout(()=>{resizeSim()},10);
+            return;
+        }
+        if(demo==='sim'){currentDemo=null}else{currentDemo=demo}
+        document.querySelectorAll('.demo-tab').forEach(t=>t.classList.remove('active'));
+        this.classList.add('active');
+        document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('show'));
+        if(demo==='sim'){document.getElementById('simControlPanel').classList.add('show')}
+        else{document.getElementById(demo+'DemoPanel').classList.add('show')}
+        document.getElementById('demoLegend').style.display=demo==='sim'?'none':'flex';
+        stopDemoAnimation();
+        // Resize canvas after panel visibility changes
+        setTimeout(()=>{resizeSim()},10);
+        if(demo==='solar'){solarSpeed=2;solarPaused=false;solarAnimTime=0;solarPhaseOverride=0;solarAutoPlay=true;zoom=1;panX=0;panY=0}
+        else if(demo==='lunar'){lunarSpeed=2;lunarPaused=false;lunarAnimTime=0;lunarPhaseOverride=0;lunarAutoPlay=true;zoom=1;panX=0;panY=0}
+        else if(demo==='transit'){zoom=1;panX=0;panY=0}
+        else{zoom=1;panX=0;panY=0}
+        updateDemoLegend();
+    });
+});
+
+function stopDemoAnimation(){
+    if(demoAnimId){clearInterval(demoAnimId);demoAnimId=null}
+    demoPhase='manual';
+    document.querySelectorAll('.demo-step-btn').forEach(b=>b.classList.remove('active'));
+}
+
+function updateDemoLegend(){
+    const el=document.getElementById('demoDescText');
+    const msgs={
+        solar:'日食3D演示：月球（小）绕行经过太阳（大）与地球（蓝）之间。月球影子（本影+半影）落在地球上形成日食。',
+        lunar:'月食3D演示：地球运行到太阳与月球之间。地球本影（暗锥）投射到月球表面，月球呈红铜色（血月）。',
+        transit:'凌日：水星或金星运行到太阳与地球之间，可见小黑点在太阳表面缓慢移动。',
+        sim:'太阳系标准演示：八大行星按比例绕太阳公转，支持分类筛选、图层开关。'
+    };
+    el.textContent=msgs[currentDemo]||'';
+}
+
+// ═══════════════ SOLAR/ECLIPSE DEMO CONTROLS ═══════════════
+// Solar eclipse phase buttons
+document.querySelectorAll('#solarDemoPanel .demo-step-btn').forEach(b=>{
+    b.addEventListener('click',function(){
+        const s=this.dataset.step;
+        if(s==='autoPlay'){
+            solarAutoPlay=!solarAutoPlay;
+            this.textContent=solarAutoPlay?'⏯ 自动':'⏸ 暂停';
+            this.classList.toggle('active',solarAutoPlay);
+            return;
+        }
+        // Phase buttons: set solarPhaseOverride and pause auto play
+        solarAutoPlay=false;
+        document.querySelectorAll('#solarDemoPanel .demo-step-btn').forEach(x=>x.classList.remove('active'));
+        const phaseVals={phase0:10,phase1:30,phase2:50,phase3:70,phase4:90};
+        if(phaseVals[s]!==undefined){
+            solarPhaseOverride=phaseVals[s];
+            document.getElementById('solarPhaseSlider').value=solarPhaseOverride;
+            document.getElementById('solarPhaseVal').textContent=solarPhaseOverride+'%';
+        }
+    });
+});
+document.getElementById('solarPhaseSlider').addEventListener('input',function(){
+    solarPhaseOverride=parseInt(this.value);
+    solarAutoPlay=false;
+    document.querySelectorAll('#solarDemoPanel .demo-step-btn').forEach(x=>x.classList.remove('active'));
+    document.getElementById('solarPhaseVal').textContent=solarPhaseOverride+'%';
+});
+
+// Lunar eclipse speed + phase
+document.querySelectorAll('#lunarDemoPanel .demo-step-btn').forEach(b=>{
+    b.addEventListener('click',function(){
+        const s=this.dataset.step;
+        if(s==='autoPlay'){
+            lunarAutoPlay=!lunarAutoPlay;
+            this.textContent=lunarAutoPlay?'⏯ 自动':'⏸ 暂停';
+            this.classList.toggle('active',lunarAutoPlay);
+            return;
+        }
+        // Phase buttons: set lunarPhaseOverride and pause auto play
+        lunarAutoPlay=false;
+        document.querySelectorAll('#lunarDemoPanel .demo-step-btn').forEach(x=>x.classList.remove('active'));
+        const phaseVals={phase0:10,phase1:30,phase2:50,phase3:70,phase4:90};
+        if(phaseVals[s]!==undefined){
+            lunarPhaseOverride=phaseVals[s];
+            document.getElementById('lunarPhaseSlider').value=lunarPhaseOverride;
+            document.getElementById('lunarPhaseVal').textContent=lunarPhaseOverride+'%';
+        }
+    });
+});
+document.getElementById('lunarPhaseSlider').addEventListener('input',function(){
+    lunarPhaseOverride=parseInt(this.value);
+    lunarAutoPlay=false;
+    document.querySelectorAll('#lunarDemoPanel .demo-step-btn').forEach(x=>x.classList.remove('active'));
+    document.getElementById('lunarPhaseVal').textContent=lunarPhaseOverride+'%';
+});
+
+// Transit controls (keep existing logic but simplified)
+document.querySelectorAll('#transitDemoPanel .demo-step-btn').forEach(b=>{
+    b.addEventListener('click',function(){
+        const step=this.dataset.step;
+        if(step==='auto'){runTransitAutoDemo(this);return}
+        stopDemoAnimation();
+        document.querySelectorAll('#transitDemoPanel .demo-step-btn[data-step]').forEach(x=>{if(x.dataset.step!=='auto')x.classList.remove('active')});
+        this.classList.add('active');
+        const vals={enter:15,center:50,exit:85};
+        transitPos=vals[step]||50;
+        document.getElementById('transitPosSlider').value=transitPos;
+        document.getElementById('transitPosVal').textContent=transitPos+'%';
+    });
+});
+function runTransitAutoDemo(btn){
+    stopDemoAnimation();btn.classList.add('active');demoPhase='auto';
+    let pos=0,dir=1;
+    demoAnimId=setInterval(()=>{
+        if(demoPhase!=='auto'){stopDemoAnimation();btn.classList.remove('active');return}
+        pos+=dir*1.5;
+        if(pos>=100){pos=100;dir=-1}
+        if(pos<=0){stopDemoAnimation();btn.classList.remove('active');transitPos=0;document.getElementById('transitPosSlider').value=0;document.getElementById('transitPosVal').textContent='0%';return}
+        transitPos=pos;
+        document.getElementById('transitPosSlider').value=Math.round(pos);
+        document.getElementById('transitPosVal').textContent=Math.round(pos)+'%';
+    },50);
+}
+document.getElementById('transitPosSlider').addEventListener('input',function(){
+    transitPos=parseInt(this.value);stopDemoAnimation();
+    document.getElementById('transitPosVal').textContent=transitPos+'%';
+    document.querySelectorAll('#transitDemoPanel .demo-step-btn[data-step]').forEach(x=>{if(x.dataset.step!=='auto')x.classList.remove('active')});
+});
+document.getElementById('transitPlanetSelect').addEventListener('change',function(){transitPlanetType=this.value});
+
+// ═══════════════ 3D SOLAR ECLIPSE RENDERING ═══════════════
+// Scientific principle: Sun ← Moon ← Earth (Moon between Sun and Earth)
+// Moon orbits Earth; when Moon passes between Sun and Earth, its shadow falls on Earth
+// Key teaching points: umbra/penumbra, total vs partial eclipse, why eclipses don't happen every month
+function drawSolarEclipse3D(){
+    const W=simW,H=simH;
+    // Auto-play: animate solarPhaseOverride from 0 to 100
+    if(solarAutoPlay){
+        solarPhaseOverride+=0.15*solarSpeed;
+        if(solarPhaseOverride>100)solarPhaseOverride=0;
+        document.getElementById('solarPhaseSlider').value=Math.round(solarPhaseOverride);
+        document.getElementById('solarPhaseVal').textContent=Math.round(solarPhaseOverride)+'%';
+    }
+    const phase=solarPhaseOverride/100; // 0~1
+    // Map phase to eclipse progress:
+    // 0-0.1: before eclipse, 0.1: 初亏, 0.3: 食既, 0.5: 食甚, 0.7: 生光, 0.9: 复圆, 0.9-1: after eclipse
+    let moonCoverage=0; // 0=none, 1=fully covered (total eclipse)
+    let eclipseStage='';
+    let stageColor='';
+    if(phase<0.1){
+        moonCoverage=0;
+        eclipseStage='日食前';
+        stageColor='rgba(200,200,200,.7)';
+    }else if(phase<0.3){
+        const t=(phase-0.1)/0.2;
+        moonCoverage=t;
+        eclipseStage='初亏 → 食既';
+        stageColor='rgba(245,158,11,.8)';
+    }else if(phase<0.5){
+        moonCoverage=1;
+        eclipseStage='食既 → 食甚';
+        stageColor='rgba(239,68,68,.8)';
+    }else if(phase<0.7){
+        moonCoverage=1;
+        eclipseStage='食甚 → 生光';
+        stageColor='rgba(239,68,68,.8)';
+    }else if(phase<0.9){
+        const t=(phase-0.7)/0.2;
+        moonCoverage=1-t;
+        eclipseStage='生光 → 复圆';
+        stageColor='rgba(245,158,11,.8)';
+    }else{
+        moonCoverage=0;
+        eclipseStage='日食后';
+        stageColor='rgba(200,200,200,.7)';
+    }
+    let currentKeyStage='';
+    if(phase>=0.08&&phase<0.12)currentKeyStage='初亏';
+    else if(phase>=0.28&&phase<0.32)currentKeyStage='食既';
+    else if(phase>=0.48&&phase<0.52)currentKeyStage='食甚';
+    else if(phase>=0.68&&phase<0.72)currentKeyStage='生光';
+    else if(phase>=0.88&&phase<0.92)currentKeyStage='复圆';
+
+    // Apply zoom/pan transform
+    simCtx.save();
+    simCtx.translate(W/2,H/2);
+    simCtx.scale(zoom,zoom);
+    simCtx.translate(-W/2+panX,-H/2+panY);
+
+    // Side-view layout: Sun(left) ——— Moon(between) ——— Earth(right)
+    const sunR=Math.min(W*.08,H*.14,50);
+    const visEarthR=Math.max(sunR*.15,18);
+    const visMoonR=Math.max(visEarthR*.28,8);
+
+    const sunX=W*.12,sunY=H*.5;
+    const earthX=W*.65,earthY=H*.5;
+    const moonOrbitR=Math.min(W*.18,H*.28,Math.max(120,W*.15));
+
+    // Moon position based on eclipse phase
+    // Moon moves from upper-right (before eclipse) through Sun-Earth line (eclipse) to lower-right (after)
+    // At phase 0.5 (食甚): Moon at angle 0 (directly between Sun and Earth)
+    const moonAngle=Math.PI+(phase-0.5)*0.7; // centered at π (left of Earth = between Sun and Earth)
+    const moonX=earthX+Math.cos(moonAngle)*moonOrbitR;
+    const moonY=earthY+Math.sin(moonAngle)*moonOrbitR*.3;
+
+    // ---- Background: light rays from Sun ----
+    simCtx.save();simCtx.globalAlpha=.035;
+    for(let i=-6;i<=6;i++){
+        const spread=i*7;
+        simCtx.beginPath();simCtx.moveTo(sunX+sunR,sunY+spread);
+        simCtx.lineTo(W,sunY+spread*2);simCtx.strokeStyle='#ffcc00';simCtx.lineWidth=sunR*.18;simCtx.stroke();
+    }
+    simCtx.restore();
+
+    // ---- Draw Sun ----
+    const coronaR=sunR*2.5;
+    const cg=simCtx.createRadialGradient(sunX,sunY,sunR*.6,sunX,sunY,coronaR);
+    cg.addColorStop(0,'rgba(255,240,180,.25)');cg.addColorStop(.5,'rgba(255,200,60,.06)');cg.addColorStop(1,'transparent');
+    simCtx.beginPath();simCtx.arc(sunX,sunY,coronaR,0,Math.PI*2);simCtx.fillStyle=cg;simCtx.fill();
+    simCtx.beginPath();simCtx.arc(sunX,sunY,sunR,0,Math.PI*2);
+    const sg=simCtx.createRadialGradient(sunX-sunR*.15,sunY-sunR*.15,sunR*.05,sunX,sunY,sunR);
+    sg.addColorStop(0,'#fff8c0');sg.addColorStop(.3,'#ffcc00');sg.addColorStop(.7,'#ffb800');sg.addColorStop(1,'#e87800');
+    simCtx.fillStyle=sg;simCtx.fill();
+
+    // ---- Moon orbit ring around Earth ----
+    simCtx.beginPath();simCtx.ellipse(earthX,earthY,moonOrbitR,moonOrbitR*.3,0,0,Math.PI*2);
+    simCtx.strokeStyle='rgba(255,255,255,.08)';simCtx.lineWidth=.8;simCtx.setLineDash([4,6]);simCtx.stroke();simCtx.setLineDash([]);
+
+    // ---- Moon's shadow cone toward Earth ----
+    if(moonCoverage>0){
+        const coneLen=Math.hypot(earthX-moonX,earthY-moonY);
+        const coneAngle=Math.atan2(earthY-moonY,earthX-moonX);
+        const umbraW=visMoonR*1.0;
+        const penumbraW=visMoonR*2.8;
+
+        // Penumbra
+        simCtx.save();simCtx.globalAlpha=.12*moonCoverage;
+        simCtx.beginPath();
+        simCtx.moveTo(moonX+Math.cos(coneAngle+Math.PI/2)*penumbraW,moonY+Math.sin(coneAngle+Math.PI/2)*penumbraW);
+        simCtx.lineTo(moonX+Math.cos(coneAngle)*coneLen+Math.cos(coneAngle+Math.PI/2)*penumbraW*1.5,moonY+Math.sin(coneAngle)*coneLen+Math.sin(coneAngle+Math.PI/2)*penumbraW*1.5);
+        simCtx.lineTo(moonX+Math.cos(coneAngle)*coneLen+Math.cos(coneAngle-Math.PI/2)*penumbraW*1.5,moonY+Math.sin(coneAngle)*coneLen+Math.sin(coneAngle-Math.PI/2)*penumbraW*1.5);
+        simCtx.lineTo(moonX+Math.cos(coneAngle-Math.PI/2)*penumbraW,moonY+Math.sin(coneAngle-Math.PI/2)*penumbraW);
+        simCtx.fillStyle='rgba(0,0,20,.5)';simCtx.fill();simCtx.restore();
+
+        // Umbra
+        simCtx.save();simCtx.globalAlpha=.3*moonCoverage;
+        simCtx.beginPath();
+        simCtx.moveTo(moonX+Math.cos(coneAngle+Math.PI/2)*umbraW,moonY+Math.sin(coneAngle+Math.PI/2)*umbraW);
+        simCtx.lineTo(moonX+Math.cos(coneAngle)*coneLen*.85+Math.cos(coneAngle+Math.PI/2)*umbraW*.2,moonY+Math.sin(coneAngle)*coneLen*.85+Math.sin(coneAngle+Math.PI/2)*umbraW*.2);
+        simCtx.lineTo(moonX+Math.cos(coneAngle)*coneLen*.85+Math.cos(coneAngle-Math.PI/2)*umbraW*.2,moonY+Math.sin(coneAngle)*coneLen*.85+Math.cos(coneAngle-Math.PI/2)*umbraW*.2);
+        simCtx.lineTo(moonX+Math.cos(coneAngle-Math.PI/2)*umbraW,moonY+Math.sin(coneAngle-Math.PI/2)*umbraW);
+        simCtx.fillStyle='rgba(0,0,10,.7)';simCtx.fill();simCtx.restore();
+    }
+
+    // ---- Draw Earth ----
+    simCtx.beginPath();simCtx.arc(earthX,earthY,visEarthR,0,Math.PI*2);
+    const eg=simCtx.createRadialGradient(earthX-visEarthR*.2,earthY-visEarthR*.2,visEarthR*.05,earthX,earthY,visEarthR);
+    eg.addColorStop(0,'#67e8f9');eg.addColorStop(.5,'#3b82f6');eg.addColorStop(1,'#1d4ed8');
+    simCtx.fillStyle=eg;simCtx.fill();
+
+    // ---- Moon's shadow spot on Earth surface ----
+    if(moonCoverage>0){
+        const spotR=visEarthR*.8;
+        // Penumbra spot
+        simCtx.save();
+        const penGrad=simCtx.createRadialGradient(earthX,earthY,spotR*.3,earthX,earthY,spotR*2);
+        penGrad.addColorStop(0,`rgba(0,0,10,${.4*moonCoverage})`);
+        penGrad.addColorStop(.5,`rgba(0,0,10,${.15*moonCoverage})`);
+        penGrad.addColorStop(1,'rgba(0,0,10,0)');
+        simCtx.beginPath();simCtx.arc(earthX,earthY,spotR*2,0,Math.PI*2);
+        simCtx.fillStyle=penGrad;simCtx.fill();simCtx.restore();
+        // Umbra spot
+        simCtx.save();
+        const umbGrad=simCtx.createRadialGradient(earthX,earthY,0,earthX,earthY,spotR*.5);
+        umbGrad.addColorStop(0,`rgba(0,0,5,${.7*moonCoverage})`);
+        umbGrad.addColorStop(1,'rgba(0,0,5,0)');
+        simCtx.beginPath();simCtx.arc(earthX,earthY,spotR*.5,0,Math.PI*2);
+        simCtx.fillStyle=umbGrad;simCtx.fill();simCtx.restore();
+        // Shadow labels
+        if(moonCoverage>.3){
+            simCtx.fillStyle='rgba(239,68,68,.6)';simCtx.font='bold 7px "Noto Sans SC"';simCtx.textAlign='left';
+            simCtx.fillText('本影区',earthX+visEarthR+6,earthY-4);
+            simCtx.beginPath();simCtx.moveTo(earthX+visEarthR+4,earthY-2);simCtx.lineTo(earthX+spotR*.3,earthY);
+            simCtx.strokeStyle='rgba(239,68,68,.3)';simCtx.lineWidth=.5;simCtx.stroke();
+            simCtx.fillStyle='rgba(245,158,11,.5)';
+            simCtx.fillText('半影区',earthX+visEarthR+6,earthY+10);
+            simCtx.beginPath();simCtx.moveTo(earthX+visEarthR+4,earthY+8);simCtx.lineTo(earthX+spotR*1.2,earthY+2);
+            simCtx.strokeStyle='rgba(245,158,11,.3)';simCtx.lineWidth=.5;simCtx.stroke();
+        }
+    }
+
+    // ---- Draw Moon ----
+    simCtx.beginPath();simCtx.arc(moonX,moonY,visMoonR,0,Math.PI*2);
+    const mg=simCtx.createRadialGradient(moonX-visMoonR*.2,moonY-visMoonR*.2,visMoonR*.05,moonX,moonY,visMoonR);
+    mg.addColorStop(0,'rgba(220,215,210,1)');mg.addColorStop(.5,'rgba(160,155,150,1)');mg.addColorStop(1,'rgba(100,95,90,1)');
+    simCtx.fillStyle=mg;simCtx.fill();
+
+    // ---- Labels (side view) ----
+    simCtx.fillStyle=lblColorWarm(.9);simCtx.font='bold 11px "Noto Sans SC"';simCtx.textAlign='center';
+    simCtx.fillText('太阳',sunX,sunY-sunR-10);
+    simCtx.fillStyle=lblColor(.7);simCtx.fillText('地球',earthX,earthY+visEarthR+16);
+    simCtx.fillText('月球',moonX,moonY-visMoonR-7);
+
+    // ═══════════════════════════════════════════════════════
+    // "从地球看太阳" — Observer's View (large, prominent)
+    // Shows the Moon crossing the Sun's disk
+    // ═══════════════════════════════════════════════════════
+    const obsR=Math.min(W*.16,H*.22,80);
+    const obsX=W*.82,obsY=H*.38;
+
+    // Background circle (dark sky)
+    simCtx.beginPath();simCtx.arc(obsX,obsY,obsR+4,0,Math.PI*2);
+    simCtx.fillStyle='rgba(0,0,10,.7)';simCtx.fill();
+    simCtx.strokeStyle='rgba(6,182,212,.4)';simCtx.lineWidth=1.5;simCtx.stroke();
+
+    // Sun disk in observer view
+    const obsSunR=obsR*.7;
+    simCtx.save();
+    simCtx.beginPath();simCtx.arc(obsX,obsY,obsSunR,0,Math.PI*2);simCtx.clip();
+
+    // Sun body
+    const isg=simCtx.createRadialGradient(obsX-obsSunR*.1,obsY-obsSunR*.1,obsSunR*.05,obsX,obsY,obsSunR);
+    isg.addColorStop(0,'#fff8c0');isg.addColorStop(.3,'#ffdd44');isg.addColorStop(.7,'#ffb800');isg.addColorStop(1,'#e87800');
+    simCtx.beginPath();simCtx.arc(obsX,obsY,obsSunR,0,Math.PI*2);
+    simCtx.fillStyle=isg;simCtx.fill();
+
+    // Moon crossing the Sun (observer's view)
+    // Moon moves from right to left across the Sun (west to east)
+    // At 初亏: Moon's right limb touches Sun's right limb
+    // At 食既: Moon fully inside Sun disk
+    // At 食甚: Moon centered on Sun
+    // At 生光: Moon starts exiting Sun's left limb
+    // At 复圆: Moon fully exits Sun's left limb
+    if(moonCoverage>0||phase>=0.08){
+        let moonOffsetX; // in sun radii, positive=right of sun center
+        if(phase<0.1){
+            // Approaching: Moon coming from right
+            const t=phase/0.1;
+            moonOffsetX=2.2-t*0.5; // from 2.2 to 1.7
+        }else if(phase<0.3){
+            // 初亏→食既: Moon moves from right edge to fully covering
+            const t=(phase-0.1)/0.2;
+            moonOffsetX=1.7-t*1.7; // from 1.7 to 0
+        }else if(phase<0.7){
+            // Total eclipse: Moon centered on Sun
+            moonOffsetX=0;
+        }else if(phase<0.9){
+            // 生光→复圆: Moon moves from center to left, uncovering Sun
+            const t=(phase-0.7)/0.2;
+            moonOffsetX=-t*1.7; // from 0 to -1.7
+        }else{
+            // Leaving: Moon exits to left
+            const t=(phase-0.9)/0.1;
+            moonOffsetX=-1.7-t*0.5; // from -1.7 to -2.2
+        }
+
+        const obsMoonR=obsSunR*.97; // Moon appears nearly same size as Sun
+        const obsMoonCX=obsX+moonOffsetX*obsSunR;
+
+        // Draw Moon as dark disk crossing Sun
+        simCtx.beginPath();simCtx.arc(obsMoonCX,obsY,obsMoonR,0,Math.PI*2);
+        simCtx.fillStyle='rgba(5,5,15,.95)';simCtx.fill();
+
+        // During total eclipse, show corona effect
+        if(moonCoverage>.9){
+            // Solar corona visible during totality
+            const coronaGrad=simCtx.createRadialGradient(obsX,obsY,obsSunR*.8,obsX,obsY,obsSunR*1.5);
+            coronaGrad.addColorStop(0,'rgba(255,240,220,.3)');
+            coronaGrad.addColorStop(.3,'rgba(255,220,180,.15)');
+            coronaGrad.addColorStop(.7,'rgba(255,200,150,.05)');
+            coronaGrad.addColorStop(1,'rgba(255,180,120,0)');
+            simCtx.beginPath();simCtx.arc(obsX,obsY,obsSunR*1.5,0,Math.PI*2);
+            simCtx.fillStyle=coronaGrad;simCtx.fill();
+
+            // Chromosphere (red rim)
+            simCtx.beginPath();simCtx.arc(obsX,obsY,obsSunR+1,0,Math.PI*2);
+            simCtx.strokeStyle='rgba(255,50,50,.4)';simCtx.lineWidth=2;simCtx.stroke();
+
+            // Diamond ring effect near 食既/生光
+            // Moon moves right-to-left across Sun
+            // 食既: Moon almost fully covers Sun, last sunlight escapes from LEFT limb
+            if(phase>0.25&&phase<0.35){
+                const drGrad=simCtx.createRadialGradient(obsX-obsSunR*.9,obsY,0,obsX-obsSunR*.9,obsY,obsSunR*.3);
+                drGrad.addColorStop(0,'rgba(255,255,255,.8)');
+                drGrad.addColorStop(.3,'rgba(255,240,200,.4)');
+                drGrad.addColorStop(1,'rgba(255,220,150,0)');
+                simCtx.beginPath();simCtx.arc(obsX-obsSunR*.9,obsY,obsSunR*.3,0,Math.PI*2);
+                simCtx.fillStyle=drGrad;simCtx.fill();
+            }
+            // 生光: Moon moves left, uncovering Sun's RIGHT limb first → diamond ring on RIGHT
+            if(phase>0.65&&phase<0.75){
+                const drGrad=simCtx.createRadialGradient(obsX+obsSunR*.9,obsY,0,obsX+obsSunR*.9,obsY,obsSunR*.3);
+                drGrad.addColorStop(0,'rgba(255,255,255,.8)');
+                drGrad.addColorStop(.3,'rgba(255,240,200,.4)');
+                drGrad.addColorStop(1,'rgba(255,220,150,0)');
+                simCtx.beginPath();simCtx.arc(obsX+obsSunR*.9,obsY,obsSunR*.3,0,Math.PI*2);
+                simCtx.fillStyle=drGrad;simCtx.fill();
+            }
+        }
+    }
+
+    simCtx.restore(); // end clip
+
+    // Observer view border
+    simCtx.beginPath();simCtx.arc(obsX,obsY,obsSunR,0,Math.PI*2);
+    if(moonCoverage>.9){
+        simCtx.strokeStyle='rgba(255,50,50,.4)';simCtx.lineWidth=2;
+    }else{
+        simCtx.strokeStyle='rgba(255,200,100,.3)';simCtx.lineWidth=1;
+    }
+    simCtx.stroke();
+
+    // Observer view label
+    simCtx.fillStyle=lblColor(.6);simCtx.font='bold 9px "Noto Sans SC"';simCtx.textAlign='center';
+    simCtx.fillText('从地球看太阳',obsX,obsY+obsR+14);
+
+    // ---- Eclipse stage label (prominent) ----
+    simCtx.fillStyle=stageColor;simCtx.font='bold 13px "Noto Sans SC"';simCtx.textAlign='center';
+    let stageText=eclipseStage;
+    if(currentKeyStage)stageText=`【${currentKeyStage}】`;
+    simCtx.fillText(stageText,W*.5,H*.88);
+
+    // Five-stage progress bar
+    const barW=Math.min(W*.5,200),barH=6;
+    const barX=W*.5-barW/2,barY=H*.92;
+    simCtx.fillStyle='rgba(255,255,255,.1)';
+    simCtx.fillRect(barX,barY,barW,barH);
+    simCtx.fillStyle='rgba(6,182,212,.5)';
+    simCtx.fillRect(barX,barY,barW*phase,barH);
+    const markers=[{pos:.1,label:'初亏'},{pos:.3,label:'食既'},{pos:.5,label:'食甚'},{pos:.7,label:'生光'},{pos:.9,label:'复圆'}];
+    markers.forEach(m=>{
+        const mx=barX+barW*m.pos;
+        simCtx.fillStyle='rgba(255,255,255,.4)';
+        simCtx.fillRect(mx-.5,barY-2,1,barH+4);
+        simCtx.fillStyle='rgba(255,255,255,.35)';simCtx.font='7px "Noto Sans SC"';simCtx.textAlign='center';
+        simCtx.fillText(m.label,mx,barY+barH+10);
+    });
+
+    // Scientific annotation
+    simCtx.fillStyle=currentTheme==='light'?'rgba(0,80,100,.6)':'rgba(6,182,212,.5)';simCtx.font='8px "Noto Sans SC"';simCtx.textAlign='center';
+    simCtx.fillText('日食：月球自西向东穿过日地连线，遮挡太阳光',W*.5,H*.97);
+    if(moonCoverage>.9){
+        simCtx.fillText('日全食时可见日冕（太阳外层大气）和色球层（红色边缘）',W*.5,H*.97+11);
+    }
+
+    simCtx.restore(); // end zoom/pan transform
+}
+
+// ═══════════════ 3D LUNAR ECLIPSE RENDERING ═══════════════
+// Scientific principle: Sun ← Earth ← Moon (Earth between Sun and Moon)
+// Earth's shadow falls on the Moon, making it appear dark/red (blood moon)
+// Key teaching: blood moon caused by Earth atmosphere refracting red light
+function drawLunarEclipse3D(){
+    const W=simW,H=simH;
+    // Auto-play: animate lunarPhaseOverride from 0 to 100
+    if(lunarAutoPlay){
+        lunarPhaseOverride+=0.15*lunarSpeed;
+        if(lunarPhaseOverride>100)lunarPhaseOverride=0;
+        document.getElementById('lunarPhaseSlider').value=Math.round(lunarPhaseOverride);
+        document.getElementById('lunarPhaseVal').textContent=Math.round(lunarPhaseOverride)+'%';
+    }
+    // eclipsePhase: 0=before eclipse, 1=first contact(初亏), 2=second contact(食既), 3=total eclipse(食甚), 4=third contact(生光), 5=fourth contact(复圆), 6=after eclipse
+    const phase=lunarPhaseOverride/100; // 0~1
+    // Map phase to eclipse progress:
+    // 0-0.1: before eclipse, 0.1: 初亏, 0.3: 食既, 0.5: 食甚, 0.7: 生光, 0.9: 复圆, 0.9-1: after eclipse
+    // Shadow coverage on moon: 0 at phase 0, increases to 1 at 食既, stays 1 until 生光, decreases to 0 at 复圆
+    let shadowCoverage=0; // 0=none, 1=fully covered (total eclipse)
+    let eclipseStage='';
+    let stageColor='';
+    if(phase<0.1){
+        shadowCoverage=0;
+        eclipseStage='月食前';
+        stageColor='rgba(200,200,200,.7)';
+    }else if(phase<0.3){
+        // 初亏 to 食既: partial eclipse, shadow covers 0→1
+        const t=(phase-0.1)/0.2;
+        shadowCoverage=t;
+        eclipseStage='初亏 → 食既';
+        stageColor='rgba(245,158,11,.8)';
+    }else if(phase<0.5){
+        // 食既 to 食甚: total eclipse deepening
+        shadowCoverage=1;
+        eclipseStage='食既 → 食甚';
+        stageColor='rgba(239,68,68,.8)';
+    }else if(phase<0.7){
+        // 食甚 to 生光: total eclipse, then starts to recede
+        shadowCoverage=1;
+        eclipseStage='食甚 → 生光';
+        stageColor='rgba(239,68,68,.8)';
+    }else if(phase<0.9){
+        // 生光 to 复圆: partial eclipse, shadow 1→0
+        const t=(phase-0.7)/0.2;
+        shadowCoverage=1-t;
+        eclipseStage='生光 → 复圆';
+        stageColor='rgba(245,158,11,.8)';
+    }else{
+        shadowCoverage=0;
+        eclipseStage='月食后';
+        stageColor='rgba(200,200,200,.7)';
+    }
+    // Determine current key stage for highlight
+    let currentKeyStage='';
+    if(phase>=0.08&&phase<0.12)currentKeyStage='初亏';
+    else if(phase>=0.28&&phase<0.32)currentKeyStage='食既';
+    else if(phase>=0.48&&phase<0.52)currentKeyStage='食甚';
+    else if(phase>=0.68&&phase<0.72)currentKeyStage='生光';
+    else if(phase>=0.88&&phase<0.92)currentKeyStage='复圆';
+
+    // Apply zoom/pan transform
+    simCtx.save();
+    simCtx.translate(W/2,H/2);
+    simCtx.scale(zoom,zoom);
+    simCtx.translate(-W/2+panX,-H/2+panY);
+
+    // Layout: Sun(left) ——— Earth(center) ——— Moon(right, orbiting Earth)
+    const sunR=Math.min(W*.06,H*.1,35);
+    const visEarthR=Math.max(sunR*.18,20);
+    const visMoonR=Math.max(visEarthR*.28,9);
+
+    const sunX=W*.1,sunY=H*.5;
+    const earthX=W*.45,earthY=H*.5;
+    // Moon position based on eclipse phase
+    const moonOrbitR=Math.min(W*.2,H*.3,Math.max(130,W*.17));
+    // Moon moves through Earth's shadow from upper-right to lower-right
+    // Shadow direction: angle 0 (directly right of Earth, away from Sun)
+    // At phase 0 (before eclipse): Moon is above shadow axis, approaching shadow
+    // At phase 0.5 (食甚): Moon at center of shadow (angle=0)
+    // At phase 1 (after eclipse): Moon is below shadow axis, leaving shadow
+    // The Moon moves from right to left through the shadow (west to east in real sky)
+    // Angular range: about -0.35 to +0.35 radians, centered on shadow axis
+    const moonAngle=(phase-0.5)*0.7; // -0.35 to +0.35 rad, centered at 0 for 食甚
+    const moonX=earthX+Math.cos(moonAngle)*moonOrbitR;
+    const moonY=earthY+Math.sin(moonAngle)*moonOrbitR*.3;
+
+    // ---- Draw Sun ----
+    const coronaR=sunR*3;
+    const cg=simCtx.createRadialGradient(sunX,sunY,sunR*.4,sunX,sunY,coronaR);
+    cg.addColorStop(0,'rgba(255,240,180,.25)');cg.addColorStop(.5,'rgba(255,200,60,.06)');cg.addColorStop(1,'transparent');
+    simCtx.beginPath();simCtx.arc(sunX,sunY,coronaR,0,Math.PI*2);simCtx.fillStyle=cg;simCtx.fill();
+    simCtx.beginPath();simCtx.arc(sunX,sunY,sunR,0,Math.PI*2);
+    const sg=simCtx.createRadialGradient(sunX-sunR*.15,sunY-sunR*.15,sunR*.05,sunX,sunY,sunR);
+    sg.addColorStop(0,'#fff8c0');sg.addColorStop(.4,'#ffcc00');sg.addColorStop(1,'#e87800');
+    simCtx.fillStyle=sg;simCtx.fill();
+
+    // ---- Light rays from Sun ----
+    simCtx.save();simCtx.globalAlpha=.035;
+    for(let i=-6;i<=6;i++){
+        const spread=i*6;
+        simCtx.beginPath();simCtx.moveTo(sunX+sunR,sunY+spread);
+        simCtx.lineTo(W,sunY+spread*1.8);simCtx.strokeStyle='#ffcc00';simCtx.lineWidth=sunR*.15;simCtx.stroke();
+    }
+    simCtx.restore();
+
+    // ---- Moon orbit ring around Earth ----
+    simCtx.beginPath();simCtx.ellipse(earthX,earthY,moonOrbitR,moonOrbitR*.3,0,0,Math.PI*2);
+    simCtx.strokeStyle='rgba(255,255,255,.07)';simCtx.lineWidth=.8;simCtx.setLineDash([4,6]);simCtx.stroke();simCtx.setLineDash([]);
+
+    // ---- Earth's shadow cone ----
+    const shadowDir=Math.atan2(earthY-sunY,earthX-sunX);
+    const shadowLen=moonOrbitR*1.6;
+    const penW=visEarthR*2.8;
+    const umbW=visEarthR*1.2;
+
+    // Penumbra
+    simCtx.save();simCtx.globalAlpha=.1;
+    simCtx.beginPath();
+    simCtx.moveTo(earthX+Math.cos(shadowDir+Math.PI/2)*visEarthR,earthY+Math.sin(shadowDir+Math.PI/2)*visEarthR);
+    simCtx.lineTo(earthX+Math.cos(shadowDir)*shadowLen+Math.cos(shadowDir+Math.PI/2)*penW,earthY+Math.sin(shadowDir)*shadowLen+Math.sin(shadowDir+Math.PI/2)*penW);
+    simCtx.lineTo(earthX+Math.cos(shadowDir)*shadowLen+Math.cos(shadowDir-Math.PI/2)*penW,earthY+Math.sin(shadowDir)*shadowLen+Math.sin(shadowDir-Math.PI/2)*penW);
+    simCtx.lineTo(earthX+Math.cos(shadowDir-Math.PI/2)*visEarthR,earthY+Math.sin(shadowDir-Math.PI/2)*visEarthR);
+    simCtx.fillStyle='rgba(10,5,20,.6)';simCtx.fill();simCtx.restore();
+
+    // Umbra
+    simCtx.save();simCtx.globalAlpha=.22;
+    simCtx.beginPath();
+    simCtx.moveTo(earthX+Math.cos(shadowDir+Math.PI/2)*visEarthR*.7,earthY+Math.sin(shadowDir+Math.PI/2)*visEarthR*.7);
+    simCtx.lineTo(earthX+Math.cos(shadowDir)*shadowLen*.75+Math.cos(shadowDir+Math.PI/2)*umbW*.15,earthY+Math.sin(shadowDir)*shadowLen*.75+Math.sin(shadowDir+Math.PI/2)*umbW*.15);
+    simCtx.lineTo(earthX+Math.cos(shadowDir)*shadowLen*.75+Math.cos(shadowDir-Math.PI/2)*umbW*.15,earthY+Math.sin(shadowDir)*shadowLen*.75+Math.sin(shadowDir-Math.PI/2)*umbW*.15);
+    simCtx.lineTo(earthX+Math.cos(shadowDir-Math.PI/2)*visEarthR*.7,earthY+Math.sin(shadowDir-Math.PI/2)*visEarthR*.7);
+    simCtx.fillStyle='rgba(5,0,10,.8)';simCtx.fill();simCtx.restore();
+
+    // ---- Draw Earth ----
+    simCtx.beginPath();simCtx.arc(earthX,earthY,visEarthR,0,Math.PI*2);
+    const eg=simCtx.createRadialGradient(earthX-visEarthR*.2,earthY-visEarthR*.2,visEarthR*.05,earthX,earthY,visEarthR);
+    eg.addColorStop(0,'#67e8f9');eg.addColorStop(.5,'#3b82f6');eg.addColorStop(1,'#1d4ed8');
+    simCtx.fillStyle=eg;simCtx.fill();
+
+    // ---- Draw Moon (side view) ----
+    simCtx.beginPath();simCtx.arc(moonX,moonY,visMoonR,0,Math.PI*2);
+    const mg=simCtx.createRadialGradient(moonX-visMoonR*.2,moonY-visMoonR*.2,visMoonR*.05,moonX,moonY,visMoonR);
+    if(shadowCoverage>.95){
+        mg.addColorStop(0,'rgba(180,60,25,1)');mg.addColorStop(.5,'rgba(140,35,15,1)');mg.addColorStop(1,'rgba(90,20,10,1)');
+    }else if(shadowCoverage>.1){
+        const t=shadowCoverage;
+        const r=Math.round(230-90*t),g=Math.round(225-190*t),b=Math.round(215-190*t);
+        mg.addColorStop(0,`rgb(${r},${g},${b})`);mg.addColorStop(.6,`rgb(${Math.max(60,r-50)},${Math.max(15,g-50)},${Math.max(10,b-50)})`);
+        mg.addColorStop(1,`rgb(${Math.max(30,r-100)},${Math.max(5,g-80)},${Math.max(5,b-80)})`);
+    }else{
+        mg.addColorStop(0,'rgba(230,225,215,1)');mg.addColorStop(.5,'rgba(190,185,175,1)');mg.addColorStop(1,'rgba(140,135,125,1)');
+    }
+    simCtx.fillStyle=mg;simCtx.fill();
+
+    // ---- Main labels (side view) ----
+    simCtx.fillStyle=lblColorWarm(.9);simCtx.font='bold 11px "Noto Sans SC"';simCtx.textAlign='center';
+    simCtx.fillText('太阳',sunX,sunY-sunR-10);
+    simCtx.fillStyle=lblColor(.7);simCtx.fillText('地球',earthX,earthY+visEarthR+18);
+    simCtx.fillText('月球',moonX,moonY-visMoonR-8);
+
+    // Shadow labels
+    if(shadowCoverage>.3){
+        simCtx.fillStyle='rgba(239,68,68,.5)';simCtx.font='bold 7px "Noto Sans SC"';simCtx.textAlign='right';
+        simCtx.fillText('地球本影',earthX+moonOrbitR*.6,earthY-8);
+        simCtx.fillStyle='rgba(245,158,11,.4)';
+        simCtx.fillText('地球半影',earthX+moonOrbitR*.8,earthY-8);
+    }
+
+    // ═══════════════════════════════════════════════════════
+    // "从地球看月球" — Observer's View (large, prominent)
+    // This is the key educational view showing the 5 stages correctly
+    // ═══════════════════════════════════════════════════════
+    const obsR=Math.min(W*.16,H*.22,80); // observer view radius
+    const obsX=W*.82,obsY=H*.38;
+
+    // Background circle (dark sky)
+    simCtx.beginPath();simCtx.arc(obsX,obsY,obsR+4,0,Math.PI*2);
+    simCtx.fillStyle='rgba(0,0,0,.6)';simCtx.fill();
+    simCtx.strokeStyle='rgba(6,182,212,.4)';simCtx.lineWidth=1.5;simCtx.stroke();
+
+    // Moon in observer view
+    const obsMoonR=obsR*.7;
+    // Draw full moon first
+    simCtx.save();
+    simCtx.beginPath();simCtx.arc(obsX,obsY,obsMoonR,0,Math.PI*2);
+    simCtx.clip();
+
+    // Full moon base
+    const fmg=simCtx.createRadialGradient(obsX-obsMoonR*.15,obsY-obsMoonR*.15,obsMoonR*.05,obsX,obsY,obsMoonR);
+    fmg.addColorStop(0,'#f0ece0');fmg.addColorStop(.4,'#e0dcd0');fmg.addColorStop(.8,'#c8c4b8');fmg.addColorStop(1,'#a8a498');
+    simCtx.fillStyle=fmg;
+    simCtx.fillRect(obsX-obsMoonR,obsY-obsMoonR,obsMoonR*2,obsMoonR*2);
+
+    // Moon surface details (maria - dark patches)
+    const maria=[{x:.15,y:-.2,r:.18},{x:-.25,y:.1,r:.15},{x:.05,y:.25,r:.12},{x:-.1,y:-.35,r:.1},{x:.3,y:.15,r:.1},{x:-.3,y:-.15,r:.08}];
+    simCtx.globalAlpha=.15;
+    maria.forEach(m=>{
+        simCtx.beginPath();simCtx.arc(obsX+m.x*obsMoonR,obsY+m.y*obsMoonR,m.r*obsMoonR,0,Math.PI*2);
+        simCtx.fillStyle='#888';simCtx.fill();
+    });
+    simCtx.globalAlpha=1;
+
+    // Earth's shadow overlay on Moon (observer's view)
+    // The Moon moves right-to-left (west-to-east) through Earth's stationary shadow
+    // So the shadow appears to enter from the LEFT side of the Moon (初亏)
+    // and exit from the RIGHT side (复圆)
+    // We simulate this with a large dark circle (Earth's umbra cross-section)
+    // that moves relative to the Moon
+    if(shadowCoverage>0){
+        // Shadow position: Earth's shadow is stationary, Moon moves through it
+        // At 初亏 (phase 0.1): shadow edge just touches Moon's left limb
+        // At 食既 (phase 0.3): shadow fully covers Moon
+        // At 食甚 (phase 0.5): Moon at shadow center
+        // At 生光 (phase 0.7): shadow starts uncovering Moon's left limb
+        // At 复圆 (phase 0.9): shadow fully leaves Moon's right limb
+        // Since Moon moves right-to-left, shadow appears to move left-to-right relative to Moon
+        let shadowOffsetX; // in moon radii, negative=left of moon center
+        if(phase<0.1){
+            shadowOffsetX=-2.5; // shadow far to the left, not touching Moon
+        }else if(phase<0.3){
+            // 初亏→食既: shadow edge moves from left limb to fully covering
+            const t=(phase-0.1)/0.2;
+            shadowOffsetX=-1.8+t*1.8; // from -1.8 to 0
+        }else if(phase<0.7){
+            // Total eclipse: shadow centered on Moon
+            shadowOffsetX=0;
+        }else if(phase<0.9){
+            // 生光→复圆: shadow moves right, uncovering Moon
+            const t=(phase-0.7)/0.2;
+            shadowOffsetX=t*1.8; // from 0 to 1.8
+        }else{
+            shadowOffsetX=2.5; // shadow far to the right
+        }
+
+        const shadowCenterX=obsX+shadowOffsetX*obsMoonR;
+
+        // Earth's umbra cross-section (larger than Moon - about 2.5x Moon diameter)
+        const umbraR=obsMoonR*1.5;
+
+        // Draw umbra as a solid dark circle clipped to Moon area
+        simCtx.save();
+        // Re-clip to Moon
+        simCtx.beginPath();simCtx.arc(obsX,obsY,obsMoonR,0,Math.PI*2);simCtx.clip();
+
+        // Penumbra ring around umbra (lighter shadow)
+        const penR=umbraR*1.4;
+        const penGrad=simCtx.createRadialGradient(shadowCenterX,obsY,umbraR*.8,shadowCenterX,obsY,penR);
+        penGrad.addColorStop(0,'rgba(0,0,5,.7)');
+        penGrad.addColorStop(.5,'rgba(0,0,5,.35)');
+        penGrad.addColorStop(1,'rgba(0,0,5,0)');
+        simCtx.beginPath();simCtx.arc(shadowCenterX,obsY,penR,0,Math.PI*2);
+        simCtx.fillStyle=penGrad;simCtx.fill();
+
+        // Umbra (dark core with sharp edge)
+        simCtx.beginPath();simCtx.arc(shadowCenterX,obsY,umbraR,0,Math.PI*2);
+        const umbGrad=simCtx.createRadialGradient(shadowCenterX,obsY,umbraR*.6,shadowCenterX,obsY,umbraR);
+        umbGrad.addColorStop(0,'rgba(0,0,0,.95)');
+        umbGrad.addColorStop(.85,'rgba(0,0,0,.85)');
+        umbGrad.addColorStop(1,'rgba(0,0,0,.6)');
+        simCtx.fillStyle=umbGrad;simCtx.fill();
+
+        // During total eclipse, add red tint (blood moon) over entire Moon
+        if(shadowCoverage>.9){
+            const redGrad=simCtx.createRadialGradient(obsX,obsY,0,obsX,obsY,obsMoonR);
+            redGrad.addColorStop(0,'rgba(180,60,25,.55)');
+            redGrad.addColorStop(.4,'rgba(150,40,18,.5)');
+            redGrad.addColorStop(.7,'rgba(120,25,12,.45)');
+            redGrad.addColorStop(1,'rgba(80,15,8,.35)');
+            simCtx.beginPath();simCtx.arc(obsX,obsY,obsMoonR,0,Math.PI*2);
+            simCtx.fillStyle=redGrad;simCtx.fill();
+        }
+
+        simCtx.restore(); // end re-clip
+    }
+
+    simCtx.restore(); // end clip
+
+    // Observer view border
+    simCtx.beginPath();simCtx.arc(obsX,obsY,obsMoonR,0,Math.PI*2);
+    if(shadowCoverage>.9){
+        simCtx.strokeStyle='rgba(180,60,25,.5)';simCtx.lineWidth=2;
+    }else{
+        simCtx.strokeStyle='rgba(200,200,200,.2)';simCtx.lineWidth=1;
+    }
+    simCtx.stroke();
+
+    // Observer view label
+    simCtx.fillStyle=lblColor(.6);simCtx.font='bold 9px "Noto Sans SC"';simCtx.textAlign='center';
+    simCtx.fillText('从地球看月球',obsX,obsY+obsR+14);
+
+    // ---- Eclipse stage label (prominent) ----
+    simCtx.fillStyle=stageColor;simCtx.font='bold 13px "Noto Sans SC"';simCtx.textAlign='center';
+    let stageText=eclipseStage;
+    if(currentKeyStage)stageText=`【${currentKeyStage}】`;
+    simCtx.fillText(stageText,W*.5,H*.88);
+
+    // Five-stage progress bar
+    const barW=Math.min(W*.5,200),barH=6;
+    const barX=W*.5-barW/2,barY=H*.92;
+    simCtx.fillStyle='rgba(255,255,255,.1)';
+    simCtx.fillRect(barX,barY,barW,barH);
+    // Current progress
+    simCtx.fillStyle='rgba(6,182,212,.5)';
+    simCtx.fillRect(barX,barY,barW*phase,barH);
+    // Stage markers
+    const markers=[{pos:.1,label:'初亏'},{pos:.3,label:'食既'},{pos:.5,label:'食甚'},{pos:.7,label:'生光'},{pos:.9,label:'复圆'}];
+    markers.forEach(m=>{
+        const mx=barX+barW*m.pos;
+        simCtx.fillStyle='rgba(255,255,255,.4)';
+        simCtx.fillRect(mx-.5,barY-2,1,barH+4);
+        simCtx.fillStyle='rgba(255,255,255,.35)';simCtx.font='7px "Noto Sans SC"';simCtx.textAlign='center';
+        simCtx.fillText(m.label,mx,barY+barH+10);
+    });
+
+    // Scientific annotation
+    simCtx.fillStyle=currentTheme==='light'?'rgba(0,80,100,.6)':'rgba(6,182,212,.5)';simCtx.font='8px "Noto Sans SC"';simCtx.textAlign='center';
+    simCtx.fillText('月食：月球自西向东穿过地球影子，初亏→食既→食甚→生光→复圆',W*.5,H*.97);
+    if(shadowCoverage>.9){
+        simCtx.fillText('月全食时月球呈红铜色（血月），因地球大气折射红光照射月球',W*.5,H*.97+11);
+    }
+
+    simCtx.restore(); // end zoom/pan transform
+}
+
+// ═══════════════ TRANSIT RENDERING ═══════════════
+function drawTransitDemo(){
+    const cx=simW*.5,cy=simH*.5,sunR=Math.min(simW*.14,simH*.2,85);
+    // Sun corona
+    const sunGrad=simCtx.createRadialGradient(cx,cy,sunR*.1,cx,cy,sunR*2.5);
+    sunGrad.addColorStop(0,'rgba(255,240,180,1)');sunGrad.addColorStop(.2,'rgba(255,200,60,.8)');sunGrad.addColorStop(.5,'rgba(255,150,20,.15)');sunGrad.addColorStop(1,'transparent');
+    simCtx.beginPath();simCtx.arc(cx,cy,sunR*2.5,0,Math.PI*2);simCtx.fillStyle=sunGrad;simCtx.fill();
+    // Sun body
+    simCtx.beginPath();simCtx.arc(cx,cy,sunR,0,Math.PI*2);
+    const sg=simCtx.createRadialGradient(cx-sunR*.15,cy-sunR*.15,sunR*.05,cx,cy,sunR);
+    sg.addColorStop(0,'#fff8c0');sg.addColorStop(.35,'#ffb800');sg.addColorStop(1,'#e87800');
+    simCtx.fillStyle=sg;simCtx.fill();
+    // Transit planet: moves in a straight line across the Sun disk (left to right)
+    // Mercury: smaller, Venus: larger (proportional to real angular size)
+    const planetR=transitPlanetType==='venus'?sunR*.06:sunR*.03;
+    const t=transitPos/100; // 0=left edge, 0.5=center, 1=right edge
+    // Straight horizontal path across Sun, with slight vertical offset for realism
+    const pathY=cy-sunR*.15; // slightly above center (typical transit path)
+    const px=cx+(t-.5)*sunR*2; // linear path across sun diameter
+    // Draw transit path line
+    simCtx.beginPath();simCtx.moveTo(cx-sunR*1.1,pathY);simCtx.lineTo(cx+sunR*1.1,pathY);
+    simCtx.strokeStyle='rgba(255,255,255,.06)';simCtx.lineWidth=.5;simCtx.setLineDash([3,5]);simCtx.stroke();simCtx.setLineDash([]);
+    // Draw planet (only when on/near the Sun disk)
+    if(t>0.02&&t<0.98){
+        simCtx.beginPath();simCtx.arc(px,pathY,planetR,0,Math.PI*2);
+        simCtx.fillStyle='rgba(10,10,20,.85)';simCtx.fill();
+        simCtx.strokeStyle='rgba(255,255,255,.08)';simCtx.lineWidth=.5;simCtx.stroke();
+        // Planet label
+        const planetName=transitPlanetType==='venus'?'金星':'水星';
+        simCtx.fillStyle=lblColor(.4);simCtx.font='7px "Noto Sans SC"';simCtx.textAlign='center';
+        simCtx.fillText(planetName,px,pathY-planetR-5);
+    }
+    // Labels
+    simCtx.fillStyle=lblColorWarm(.9);simCtx.font='bold 12px "Noto Sans SC"';simCtx.textAlign='center';
+    simCtx.fillText('太阳',cx,cy-sunR*1.5);
+    const planetName=transitPlanetType==='venus'?'金星':'水星';
+    simCtx.fillStyle=lblColor(.6);simCtx.font='10px "Noto Sans SC"';
+    simCtx.fillText(`${planetName}凌日`,cx,cy+sunR*1.5);
+    simCtx.fillStyle='rgba(6,182,212,.45)';simCtx.font='8px "Noto Sans SC"';
+    simCtx.fillText(`${planetName}从太阳盘面前方直线经过，看起来像一个小黑点`,cx,cy+sunR*1.5+14);
+    // Observer's view inset
+    const insetR=Math.min(simW*.08,simH*.1,38);
+    const insetX=simW*.88,insetY=simH*.18;
+    simCtx.beginPath();simCtx.arc(insetX,insetY,insetR+3,0,Math.PI*2);
+    simCtx.fillStyle='rgba(0,0,10,.7)';simCtx.fill();
+    simCtx.strokeStyle='rgba(6,182,212,.3)';simCtx.lineWidth=1;simCtx.stroke();
+    const insetSunR=insetR*.75;
+    simCtx.beginPath();simCtx.arc(insetX,insetY,insetSunR,0,Math.PI*2);
+    const isg=simCtx.createRadialGradient(insetX-insetSunR*.1,insetY-insetSunR*.1,insetSunR*.05,insetX,insetY,insetSunR);
+    isg.addColorStop(0,'#fff8c0');isg.addColorStop(.4,'#ffcc00');isg.addColorStop(1,'#e87800');
+    simCtx.fillStyle=isg;simCtx.fill();
+    // Inset planet
+    if(t>0.05&&t<0.95){
+        const insetPlanetR=transitPlanetType==='venus'?insetSunR*.06:insetSunR*.03;
+        const ipx=insetX+(t-.5)*insetSunR*1.6;
+        const ipy=insetY-insetSunR*.15;
+        simCtx.beginPath();simCtx.arc(ipx,ipy,insetPlanetR,0,Math.PI*2);
+        simCtx.fillStyle='rgba(10,10,20,.9)';simCtx.fill();
+    }
+    simCtx.fillStyle='rgba(255,255,255,.5)';simCtx.font='bold 7px "Noto Sans SC"';simCtx.textAlign='center';
+    simCtx.fillText('望远镜视角',insetX,insetY+insetR+12);
+}
+
+// ═══════════════ PLAY/PAUSE (works for all modes) ═══════════════
 document.getElementById('btnPause').addEventListener('click',function(){
-    simPaused=!simPaused;this.classList.toggle('toggle-on',!simPaused);
-    this.textContent=simPaused?'▶':'⏯';
+    if(!currentDemo){
+        // Solar system sim mode
+        simPaused=!simPaused;this.classList.toggle('toggle-on',!simPaused);
+        this.textContent=simPaused?'▶':'⏯';
+    }else if(currentDemo==='solar'){
+        solarAutoPlay=!solarAutoPlay;
+        this.classList.toggle('toggle-on',solarAutoPlay);
+        this.textContent=solarAutoPlay?'⏯':'▶';
+    }else if(currentDemo==='lunar'){
+        lunarAutoPlay=!lunarAutoPlay;
+        this.classList.toggle('toggle-on',lunarAutoPlay);
+        this.textContent=lunarAutoPlay?'⏯':'▶';
+    }else if(currentDemo==='transit'){
+        // Toggle transit auto animation
+        if(demoAnimId){stopDemoAnimation();this.textContent='▶';this.classList.remove('toggle-on')}
+        else{runTransitAutoDemo(document.querySelector('#transitDemoPanel .demo-step-btn[data-step="auto"]'));this.textContent='⏯';this.classList.add('toggle-on')}
+    }
 });
 
 // Reset
 document.getElementById('btnReset').addEventListener('click',function(){
     speed=1;zoom=1;panX=0;panY=0;simPaused=false;focusPlanetId=null;
-    eclipseMode=null;
+    currentDemo=null;stopDemoAnimation();
     // Reset toggle states
     ['btnShowOrbits','btnShowLabels','btnShowKnowledge'].forEach(id=>document.getElementById(id).classList.add('toggle-on'));
-    ['btnShowPluto','btnShowAsteroids','btnShowComet','btnEclipseSolar','btnEclipseLunar','btnTransit'].forEach(id=>document.getElementById(id).classList.remove('toggle-on'));
+    ['btnShowPluto','btnShowAsteroids','btnShowComet'].forEach(id=>document.getElementById(id).classList.remove('toggle-on'));
     showOrbits=showLabels=showKnowledge=true;
     showPluto=showAsteroids=showComet=false;
-    eclipseMode=null;
+    solarSpeed=2;solarPaused=false;solarAnimTime=0;solarViewAngle=0;solarPhaseOverride=0;solarAutoPlay=true;
+    lunarSpeed=2;lunarPaused=false;lunarPhaseOverride=0;lunarAnimTime=0;lunarAutoPlay=true;
+    transitPos=50;
+    document.getElementById('solarPhaseSlider').value=0;document.getElementById('solarPhaseVal').textContent='0%';
+    document.getElementById('lunarPhaseSlider').value=0;document.getElementById('lunarPhaseVal').textContent='0%';
+    document.getElementById('transitPosSlider').value=50;document.getElementById('transitPosVal').textContent='50%';
+    document.querySelector('.demo-tab[data-demo="sim"]').classList.add('active');
+    document.querySelectorAll('.demo-tab:not([data-demo="sim"])').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('show'));
+    document.getElementById('simControlPanel').classList.add('show');
+    document.getElementById('demoLegend').style.display='none';
     document.getElementById('btnPause').classList.add('toggle-on');document.getElementById('btnPause').textContent='⏯';
     document.getElementById('speedSlider').value=1;document.getElementById('speedVal').textContent='1.0x';
     document.getElementById('focusSelect').value='';
@@ -890,9 +1967,16 @@ document.getElementById('btnReset').addEventListener('click',function(){
     genAsteroids();
 });
 
-// Speed slider
+// Speed slider (works for all modes)
 const speedSlider=document.getElementById('speedSlider');
-speedSlider.addEventListener('input',()=>{speed=parseFloat(speedSlider.value);document.getElementById('speedVal').textContent=speed.toFixed(1)+'x'});
+speedSlider.addEventListener('input',()=>{
+    const v=parseFloat(speedSlider.value);
+    speed=v;
+    document.getElementById('speedVal').textContent=v.toFixed(1)+'x';
+    // Also update demo speeds
+    if(currentDemo==='solar')solarSpeed=v;
+    else if(currentDemo==='lunar')lunarSpeed=v;
+});
 
 // Focus select
 document.getElementById('focusSelect').addEventListener('change',function(){
@@ -915,7 +1999,16 @@ document.getElementById('focusSelect').addEventListener('change',function(){
     this.value=''; // reset dropdown
 });
 
-function simLoop(){if(!simPaused||simTime===0)drawSim();requestAnimationFrame(simLoop)}
+function simLoop(){
+    if(simW<10||simH<10){requestAnimationFrame(simLoop);return}
+    if(currentDemo){
+        simCtx.fillStyle=currentTheme==='light'?'#c8c8c8':'#050e1a';simCtx.fillRect(0,0,simW,simH);
+        if(currentDemo==='solar')drawSolarEclipse3D();
+        else if(currentDemo==='lunar')drawLunarEclipse3D();
+        else if(currentDemo==='transit')drawTransitDemo();
+    }else if(!simPaused||simTime===0){drawSim()}
+    requestAnimationFrame(simLoop)
+}
 simLoop();
 
 // Season & Date display
@@ -926,7 +2019,7 @@ function updateDateTime(){
     const seasonIdx=Math.floor(((month+1)%12)/3);
     const s=document.getElementById('simSeason');
     s.textContent=seasonNames[seasonIdx];s.className='sim-season '+seasons[seasonIdx];
-    document.getElementById('simDate').textContent=now.toLocaleDateString('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',weekday:'short'})+' '+now.toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'});
+    document.getElementById('simDateText').textContent=now.toLocaleDateString('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',weekday:'short'})+' '+now.toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'});
 }
 updateDateTime();setInterval(updateDateTime,10000);
 
@@ -1050,19 +2143,45 @@ const btnMic=document.getElementById('btnMic'),voiceOverlay=document.getElementB
 function initReco(){
     const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
     if(!SR){btnMic.style.display='none';return}
-    recognition=new SR();recognition.lang='zh-CN';recognition.continuous=false;recognition.interimResults=true;
-    recognition.onstart=()=>{isRecording=true;btnMic.classList.add('recording');btnMic.textContent='⏹';voiceOverlay.style.display='flex';document.getElementById('voiceStatusText').textContent='正在聆听...'}
-    recognition.onresult=e=>{let t='';for(let i=e.resultIndex;i<e.results.length;i++)t+=e.results[i][0].transcript;document.getElementById('chatInput').value=t;if(e.results[0].isFinal){stopRec();setTimeout(()=>sendMessage(),300)}}
-    recognition.onerror=()=>stopRec();recognition.onend=()=>{if(isRecording)stopRec()}
+    recognition=new SR();recognition.lang='zh-CN';recognition.continuous=true;recognition.interimResults=true;
+    recognition.onstart=()=>{isRecording=true;btnMic.classList.add('recording');btnMic.textContent='⏹';voiceOverlay.style.display='flex';document.getElementById('voiceStatusText').textContent='正在聆听...点击按钮结束'}
+    recognition.onresult=e=>{
+        let finalTranscript='',interimTranscript='';
+        for(let i=e.resultIndex;i<e.results.length;i++){
+            if(e.results[i].isFinal)finalTranscript+=e.results[i][0].transcript;
+            else interimTranscript+=e.results[i][0].transcript;
+        }
+        const text=finalTranscript||interimTranscript;
+        if(text){
+            document.getElementById('chatInput').value=text;
+            document.getElementById('voiceStatusText').textContent='识别中：'+text;
+        }
+    };
+    recognition.onerror=e=>{console.warn('语音识别错误:',e.error);if(e.error!=='no-speech')stopRec()};
+    recognition.onend=()=>{if(isRecording){try{recognition.start()}catch(e){stopRec()}}}; // auto-restart if still recording
 }
-function startRec(){if(!recognition)initReco();if(recognition)try{recognition.start()}catch(e){stopRec()}}
-function stopRec(){isRecording=false;btnMic.classList.remove('recording');btnMic.textContent='🎤';voiceOverlay.style.display='none';try{recognition.stop()}catch(e){}}
+function startRec(){
+    if(!recognition)initReco();
+    if(!recognition){alert('您的浏览器不支持语音输入，请使用Chrome浏览器');return}
+    document.getElementById('chatInput').value=''; // clear input before new recording
+    try{recognition.start()}catch(e){stopRec();setTimeout(()=>{try{recognition.start()}catch(e2){}},200)}
+}
+function stopRec(){
+    isRecording=false;btnMic.classList.remove('recording');btnMic.textContent='🎤';voiceOverlay.style.display='none';
+    try{recognition.stop()}catch(e){}
+    // Auto send if there's text
+    const input=document.getElementById('chatInput');
+    if(input.value.trim())setTimeout(()=>sendMessage(),200);
+}
 btnMic.addEventListener('click',()=>{isRecording?stopRec():startRec()});initReco();
 
 // ═══════════════ VOICE OUTPUT ═══════════════
 let speakerOn=true;const btnSpeaker=document.getElementById('btnSpeaker');
 function speakText(text){
     if(!speakerOn)return;
+    // Strip emoji and special symbols before speaking
+    text=text.replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{FE00}-\u{FE0F}]|[\u{1F000}-\u{1F02F}]|[\u{1F0A0}-\u{1F0FF}]|[\u{1F100}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}]|[\u{1F900}-\u{1F9FF}]|[\u{1FA00}-\u{1FA6F}]|[\u{1FA70}-\u{1FAFF}]|[\u{200D}]|[\u{20E3}]|[\u{E0020}-\u{E007F}]/gu,'').replace(/\s+/g,' ').trim();
+    if(!text)return;
     speechSynthesis.cancel();
     const voices=speechSynthesis.getVoices();
     const preferred=['Tingting','Sin-Ji','Microsoft Hanhan','Microsoft Xiaoxiao','zh-CN'];
@@ -1104,16 +2223,87 @@ let quizState={total:5,current:0,answers:[],questions:[],answered:false,reinforc
 document.querySelectorAll('.quiz-mode-btn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.quiz-mode-btn').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');quizState.total=parseInt(b.dataset.count)}));
 document.getElementById('startQuizBtn').addEventListener('click',startQuiz);
 
-function startQuiz(){
+async function startQuiz(){
+    const total=quizState.total;
     const shuffled=[...quizQuestions].sort(()=>Math.random()-.5);
-    quizState={total:Math.min(quizState.total,shuffled.length),current:0,answers:[],questions:shuffled.slice(0,quizState.total),answered:false,reinforceCount:0};
-    document.getElementById('quizSetup').style.display='none';document.getElementById('quizResult').innerHTML='';showQuestion();
+    const bankCount=Math.min(total,shuffled.length);
+    let questions=shuffled.slice(0,bankCount);
+
+    // AI-generated exploration questions: 1 for 5-question, 2 for 10-question, 4 for 20-question
+    const aiCountMap={5:1,10:2,20:4};
+    const aiCount=aiCountMap[total]||0;
+
+    if(aiCount>0&&dsApiKey&&bankCount>=total-aiCount){
+        const bankQuestions=questions.slice(0,total-aiCount);
+        // Show loading state
+        document.getElementById('quizSetup').style.display='none';
+        document.getElementById('quizResult').innerHTML='<div style="text-align:center;padding:30px"><div class="typing-dots"><span></span><span></span><span></span></div><div style="margin-top:10px;font-size:.82rem;color:var(--text-secondary)">AI 正在为你定制探索题...</div></div>';
+
+        try{
+            const answeredTopics=bankQuestions.map(q=>q.topic).join('、');
+            const prompt=`你是一位充满热情的天文科普老师，正在为中小学生出太阳系探索题。请出${aiCount}道以实际问题为主的探索题，要求：
+
+1. 题目以实际问题、情境故事为主，可以长一点（30-60字），让学生身临其境
+2. 题目类型示例：
+   - "如果你站在木星表面（假设可以），你会看到什么景象？"
+   - "小明用望远镜观测到一颗行星有美丽的光环，他看到的可能是？"
+   - "2026年3月将发生一次月全食，届时你会看到月亮变成什么颜色？"
+   - "如果乘坐飞船从地球飞往火星，大约需要多长时间？"
+   - "为什么我们总是看到月球的同一面？"
+3. 题目要激发好奇心和探索欲，让学生想了解更多
+4. 每题4个选项，1个正确答案，选项也要有情境感
+5. 已出过的知识点：${answeredTopics}，请避开重复
+6. 难度适中，适合中小学生
+
+请严格按JSON数组格式回复：
+[{"question":"题目","options":["A","B","C","D"],"answer":0,"exp":"简短解释(30字内)","topic":"主题"}]`;
+            const aiResp=await callDeepSeek(prompt,'你是天文科普老师，出以实际问题为主的太阳系探索题。只回复JSON数组，不要其他内容。');
+            if(aiResp){
+                const jsonStr=aiResp.replace(/```json|```/g,'').trim();
+                const match=jsonStr.match(/\[[\s\S]*\]/);
+                if(match){
+                    const aiQuestions=JSON.parse(match[0]);
+                    aiQuestions.forEach(aq=>{
+                        // Clean options: remove leading "A."/"B."/"C."/"D."/"1."/"2." prefixes if AI included them
+                        const cleanOpts=(aq.options||[]).map(o=>String(o).replace(/^[A-Da-d][.、．:：)\s]+|^[1-4][.、．:：)\s]+/,'').trim());
+                        bankQuestions.push({
+                            q:aq.question,
+                            opts:cleanOpts,
+                            ans:aq.answer,
+                            exp:aq.exp||'',
+                            topic:aq.topic||'探索拓展',
+                            isAI:true
+                        });
+                    });
+                    questions=bankQuestions;
+                }
+            }
+        }catch(e){
+            // Fallback: use bank questions if AI fails
+            questions=shuffled.slice(0,total);
+        }
+    }else if(total>shuffled.length){
+        // Not enough bank questions, just use what we have
+        questions=shuffled.slice(0,shuffled.length);
+    }
+
+    quizState={total:questions.length,current:0,answers:[],questions,answered:false,reinforceCount:0};
+    document.getElementById('quizResult').innerHTML='';showQuestion();
 }
 function showQuestion(){
     const q=quizState.questions[quizState.current];const pct=(quizState.current/quizState.total)*100;
-    document.getElementById('quizQuestion').innerHTML=`<div class="quiz-card"><div class="quiz-progress-row"><span>${quizState.current+1}/${quizState.total}</span><div class="quiz-bar"><div class="quiz-bar-fill" style="width:${pct}%"></div></div><span style="color:var(--accent-cyan)">${Math.round(pct)}%</span></div><div class="quiz-question">${q.q}</div>${q.opts.map((o,i)=>`<div class="quiz-option" data-idx="${i}">${'ABCD'[i]}. ${o}</div>`).join('')}<div class="quiz-exp" id="quizExp"></div><div class="reinforce-section" id="reinforceSection"><h4>📚 AI 详细解析 + 强化练习</h4><div id="reinforceContent"></div></div><div id="quizNext" style="text-align:center;margin-top:10px;display:none"><button class="btn-primary" onclick="nextQ()" style="font-size:.78rem;padding:7px 24px">${quizState.current<quizState.total-1?'下一题 ▶':'查看结果 📊'}</button></div></div>`;
+    const aiTag=q.isAI?'<span style="font-size:.6rem;background:rgba(124,58,237,.2);color:var(--accent-purple);padding:1px 6px;border-radius:8px;margin-left:6px">AI探索题</span>':'';
+    document.getElementById('quizQuestion').innerHTML=`<div class="quiz-card"><div class="quiz-progress-row"><span>${quizState.current+1}/${quizState.total}</span><div class="quiz-bar"><div class="quiz-bar-fill" style="width:${pct}%"></div></div><span style="color:var(--accent-cyan)">${Math.round(pct)}%</span></div><div class="quiz-question" style="display:flex;align-items:flex-start;gap:6px"><span style="flex:1">${q.q}${aiTag}</span><button onclick="readQuizQuestion()" style="background:none;border:none;cursor:pointer;font-size:1rem;color:var(--accent-cyan);flex-shrink:0;padding:2px 4px" title="朗读题目">🔊</button></div>${q.opts.map((o,i)=>`<div class="quiz-option" data-idx="${i}">${'ABCD'[i]}. ${o}</div>`).join('')}<div class="quiz-exp" id="quizExp"></div><div class="reinforce-section" id="reinforceSection"><h4>📚 AI 详细解析 + 强化练习</h4><div id="reinforceContent"></div></div><div id="quizNext" style="text-align:center;margin-top:10px;display:none"><button class="btn-primary" onclick="nextQ()" style="font-size:.78rem;padding:7px 24px">${quizState.current<quizState.total-1?'下一题 ▶':'查看结果 📊'}</button></div></div>`;
     quizState.answered=false;
     document.querySelectorAll('.quiz-option').forEach(o=>o.addEventListener('click',()=>answerQ(parseInt(o.dataset.idx))));
+}
+
+function readQuizQuestion(){
+    const q=quizState.questions[quizState.current];
+    if(!q)return;
+    const optsText=q.opts.map((o,i)=>`选项${'ABCD'[i]}，${o}`).join('。');
+    const text=`第${quizState.current+1}题：${q.q}。${optsText}`;
+    speakText(text);
 }
 
 async function answerQ(idx){
@@ -1145,7 +2335,8 @@ async function answerQ(idx){
                         const jsonStr=quizMatch[1].trim().replace(/```json|```/g,'').trim();
                         const rQuiz=JSON.parse(jsonStr);
                         window._reinforceQuiz=rQuiz;
-                        reinforcedHTML=`<div class="reinforce-question">🔁 强化题：${rQuiz.question}</div>${rQuiz.options.map((o,i)=>`<div class="quiz-option reinforce-opt" data-r-idx="${i}">${'ABCD'[i]}. ${o}</div>`).join('')}<div class="quiz-exp" id="reinforceExp" style="margin-top:6px"></div>`;
+                        const cleanROpts=(rQuiz.options||[]).map(o=>String(o).replace(/^[A-Da-d][.、．:：)\s]+|^[1-4][.、．:：)\s]+/,'').trim());
+                        reinforcedHTML=`<div class="reinforce-question">🔁 强化题：${rQuiz.question}</div>${cleanROpts.map((o,i)=>`<div class="quiz-option reinforce-opt" data-r-idx="${i}">${'ABCD'[i]}. ${o}</div>`).join('')}<div class="quiz-exp" id="reinforceExp" style="margin-top:6px"></div>`;
                     }catch(e){reinforcedHTML=''}
                 }
                 reinContent.innerHTML=`<p style="font-size:.78rem;line-height:1.7;margin-bottom:8px;color:#cbd5e1"><span style="color:var(--accent-cyan)">🤖 AI讲解：</span>${explainText||aiResp.substring(0,200)}</p>${reinforcedHTML}`;
@@ -1218,6 +2409,7 @@ function renderRecords(){
     qE.innerHTML=qR.length===0?'<div class="empty-state">📝 暂无测验记录</div>':qR.map(r=>`<div class="record-card" style="flex-direction:column;align-items:flex-start"><div style="display:flex;justify-content:space-between;align-items:center;width:100%"><div><div style="font-size:.65rem;color:#64748b">${r.date}</div><div>${r.total}题·正确${r.correct}题</div></div><div class="record-score" style="color:${r.score>=80?'var(--accent-emerald)':r.score>=60?'var(--accent-amber)':'#ef4444'}">${r.score}分</div><button class="btn-sm" onclick="delQR(${r.id})">删</button></div>${r.review?`<div class="review-toggle" onclick="this.nextElementSibling.classList.toggle('show');this.classList.toggle('open')" style="cursor:pointer;font-size:.68rem;color:var(--accent-cyan);margin-top:4px;user-select:none">▶ 查看AI点评</div><div class="review-content" style="margin-top:4px;padding:8px 10px;background:rgba(124,58,237,.06);border-radius:8px;font-size:.72rem;line-height:1.6;color:var(--text-secondary);width:100%;border-left:3px solid var(--accent-purple)"><span style="color:var(--accent-cyan)">🤖 AI点评：</span>${r.review.replace(/\n/g,'<br>')}</div>`:''}</div>`).join('');
     const cE=document.getElementById('chatRecords'),cR=JSON.parse(localStorage.getItem('solar_cr')||'[]');
     cE.innerHTML=cR.length===0?'<div class="empty-state">💬 暂无对话存档<br><small>在问答页保存对话后可在此查看</small></div>':cR.map(r=>`<div class="record-card"><div><div style="font-size:.65rem;color:#64748b">${r.date}</div><div>${r.preview||'对话'}</div></div><button class="btn-sm" onclick="viewCR(${r.id})">查看</button><button class="btn-sm" onclick="delCR(${r.id})">删</button></div>`).join('');
+    renderLearningAnalysis(qR);
 }
 function delQR(id){let r=JSON.parse(localStorage.getItem('solar_q')||'[]');r=r.filter(x=>x.id!==id);localStorage.setItem('solar_q',JSON.stringify(r));renderRecords()}
 function delCR(id){let r=JSON.parse(localStorage.getItem('solar_cr')||'[]');r=r.filter(x=>x.id!==id);localStorage.setItem('solar_cr',JSON.stringify(r));renderRecords()}
@@ -1226,6 +2418,167 @@ function viewCR(id){
     document.getElementById('chatMessages').innerHTML='';
     window._ch=r.messages||[];(r.messages||[]).forEach(m=>{addChatMsg(m.role,m.content)});
     document.querySelector('#rightPanel [data-page="chat"]').click();
+}
+
+// ═══════════════ LEARNING ANALYSIS ═══════════════
+function renderLearningAnalysis(records){
+    const box=document.getElementById('learningAnalysis');
+    if(!box)return;
+    if(records.length===0){
+        box.innerHTML='<h3>📈 阶段性学习建议</h3><div style="color:var(--text-secondary);font-size:.75rem;text-align:center;padding:10px">暂无测验记录，完成测验后将生成综合性学习建议</div>';
+        return;
+    }
+    // Calculate statistics
+    const totalTests=records.length;
+    const avgScore=Math.round(records.reduce((s,r)=>s+(r.score||0),0)/totalTests);
+    const maxScore=Math.max(...records.map(r=>r.score||0));
+    const recent5=records.slice(0,Math.min(5,totalTests));
+    const recentAvg=Math.round(recent5.reduce((s,r)=>s+(r.score||0),0)/recent5.length);
+    const trend=recentAvg>avgScore?'📈 进步中':(recentAvg<avgScore?'📉 需关注':'➡️ 平稳');
+    const scores=records.map(r=>r.score||0).sort((a,b)=>a-b);
+    const median=scores[Math.floor(scores.length/2)];
+    
+    // Collect topics from wrong answers
+    const topicCount={};
+    records.forEach(r=>{
+        if(!r.questions)return;
+        r.questions.forEach((q,i)=>{
+            // A question with wrong answer would have matching index issues
+            // We analyze by topic frequency in questions
+            if(q.topic)topicCount[q.topic]=(topicCount[q.topic]||0)+1;
+        });
+    });
+    const sortedTopics=Object.entries(topicCount).sort((a,b)=>b[1]-a[1]).slice(0,4);
+    
+    // Determine weak areas based on score distribution
+    const lowScores=records.filter(r=>(r.score||0)<70);
+    const weakTopics=new Set();
+    lowScores.forEach(r=>{
+        if(!r.questions)return;
+        r.questions.forEach(q=>{if(q.topic)weakTopics.add(q.topic)});
+    });
+    const weakList=[...weakTopics];
+    
+    // Generate suggestions
+    const suggestions=[];
+    if(avgScore<60){
+        suggestions.push('基础知识需加强：建议从八大行星的名称、排列顺序和基本分类（岩石/气态）开始系统学习，结合左侧太阳系模拟逐一行星观察。');
+    }else if(avgScore<80){
+        suggestions.push('整体表现良好，可以在行星特征细节（如大小比较、卫星数量、温度范围）方面进一步巩固，利用左侧模拟的「知识点」图层查看关键信息。');
+    }else{
+        suggestions.push('表现优秀！对太阳系行星已有深入理解，建议拓展学习天文现象（日食、月食、凌日），点击上方演示选项卡进行互动体验。');
+    }
+    
+    if(recentAvg<avgScore)suggestions.push(`最近${recent5.length}次成绩呈下降趋势，建议重点复习薄弱知识点，可使用AI问答功能针对性学习。`);
+    if(weakList.length>0)suggestions.push(`薄弱考点：${weakList.slice(0,3).join('、')}。建议针对这些主题多做测验，在左侧模拟太阳系中点击相关行星查看详情加深印象。`);
+    if(totalTests>=5){
+        const consistency=scores[Math.ceil(scores.length*.75)]-scores[Math.floor(scores.length*.25)];
+        if(consistency>30)suggestions.push('成绩波动较大，建议每次测验后仔细阅读AI点评，利用强化题巩固薄弱环节后再继续挑战。');
+    }
+    suggestions.push('互动学习法：利用左侧演示卡片的「日食/月食/凌日」交互演示，观察天体运行规律，将书本知识与可视化模拟结合，加深理解。');
+    
+    box.innerHTML=`<h3>📈 阶段性学习建议</h3>
+        <div class="la-stats">
+            <div class="la-stat"><div class="la-stat-val">${totalTests}</div><div class="la-stat-label">总测验数</div></div>
+            <div class="la-stat"><div class="la-stat-val">${avgScore}</div><div class="la-stat-label">平均分</div></div>
+            <div class="la-stat"><div class="la-stat-val">${maxScore}</div><div class="la-stat-label">最高分</div></div>
+            <div class="la-stat"><div class="la-stat-val">${median}</div><div class="la-stat-label">中位分</div></div>
+            <div class="la-stat"><div class="la-stat-val">${recentAvg}</div><div class="la-stat-label">近${recent5.length}次均分</div></div>
+            <div class="la-stat" style="min-width:80px"><div class="la-stat-val" style="font-size:.8rem">${trend}</div><div class="la-stat-label">趋势</div></div>
+        </div>
+        ${sortedTopics.length?`<div style="font-size:.68rem;color:var(--text-secondary);margin-bottom:8px">常考知识点：${sortedTopics.map(t=>`<span class="la-weak-tag">${t[0]} ${t[1]}次</span>`).join('')}</div>`:''}
+        ${weakList.length?`<div style="margin-bottom:8px"><span style="font-size:.68rem;color:var(--text-secondary)">重点复习：</span>${weakList.slice(0,4).map(t=>`<span class="la-weak-tag" style="color:var(--accent-amber)">${t}</span>`).join('')}</div>`:''}
+        <div class="la-suggestions">
+            <div style="font-size:.75rem;color:var(--accent-cyan);font-weight:600;margin-bottom:8px">💡 综合学习建议</div>
+            ${suggestions.map(s=>`<div class="la-sug-item">${s}</div>`).join('')}
+        </div>
+        <button class="eval-btn" onclick="renderStageEvalChart()" style="width:100%">🔍 生成阶段性评价与学习重点分析</button>
+        <div class="blindspot-container" id="blindspotChart" style="display:none"><canvas id="blindspotCanvas"></canvas></div>`;
+}
+
+// ═══════════════ STAGE EVALUATION CHART ═══════════════
+function renderStageEvalChart(){
+    const container=document.getElementById('blindspotChart');
+    container.style.display='block';
+    const canvas=document.getElementById('blindspotCanvas');
+    const rect=container.getBoundingClientRect();
+    
+    const records=JSON.parse(localStorage.getItem('solar_q')||'[]');
+    if(records.length===0){
+        canvas.width=rect.width;canvas.height=60;
+        const ctx=canvas.getContext('2d');
+        ctx.fillStyle='rgba(148,163,184,.6)';ctx.font='11px "Noto Sans SC"';ctx.textAlign='center';
+        ctx.fillText('暂无测验数据',canvas.width/2,35);return;
+    }
+    
+    // Analyze wrong topic frequencies
+    const wrongTopicCount={};
+    records.forEach(r=>{
+        if(!r.questions)return;
+        const totalQ=r.total||r.questions.length;
+        const correctCount=r.correct||0;
+        const wrongCount=totalQ-correctCount;
+        if(wrongCount<=0)return;
+        r.questions.forEach((q,i)=>{
+            if(q.topic){wrongTopicCount[q.topic]=(wrongTopicCount[q.topic]||0)+wrongCount/r.questions.length;}
+        });
+    });
+    
+    let entries=Object.entries(wrongTopicCount).sort((a,b)=>b[1]-a[1]);
+    if(entries.length===0){
+        canvas.width=rect.width;canvas.height=60;
+        const ctx=canvas.getContext('2d');
+        ctx.fillStyle='rgba(148,163,184,.6)';ctx.font='11px "Noto Sans SC"';ctx.textAlign='center';
+        ctx.fillText('暂无错误记录，继续保持！',canvas.width/2,35);return;
+    }
+    
+    // Filter: only show important topics (>= 30% of max error count, max 5)
+    const maxVal=entries[0][1];
+    entries=entries.filter(e=>e[1]>=maxVal*0.3).slice(0,5);
+    
+    // Layout: horizontal bar chart - clear and well-spaced
+    const barH=28,gap=12,padTop=35,padBottom=15,padLeft=12,padRight=12;
+    const chartH=padTop+entries.length*(barH+gap)+padBottom;
+    canvas.width=rect.width;canvas.height=chartH;
+    const ctx=canvas.getContext('2d');
+    
+    // Title
+    ctx.fillStyle='rgba(255,255,255,.65)';ctx.font='bold 10px "Noto Sans SC"';ctx.textAlign='left';
+    ctx.fillText('📊 学习重点分析（错误较多的知识点）',padLeft,20);
+    
+    const newMax=Math.max(...entries.map(e=>e[1]));
+    const colors=['rgba(239,68,68,.7)','rgba(249,115,22,.65)','rgba(245,158,11,.6)','rgba(234,179,8,.55)','rgba(132,204,22,.5)'];
+    const labelW=75;
+    const barMaxW=canvas.width-padLeft-labelW-padRight-40;
+    
+    entries.forEach((e,i)=>{
+        const y=padTop+i*(barH+gap);
+        const ratio=e[1]/newMax;
+        const barW=Math.max(20,ratio*barMaxW);
+        
+        // Background track
+        ctx.fillStyle='rgba(255,255,255,.04)';
+        ctx.beginPath();ctx.roundRect(padLeft+labelW,y,barMaxW,barH,5);ctx.fill();
+        
+        // Bar fill with gradient
+        const barGrad=ctx.createLinearGradient(padLeft+labelW,y,padLeft+labelW+barW,y+barH);
+        barGrad.addColorStop(0,colors[i%colors.length]);
+        barGrad.addColorStop(1,colors[i%colors.length].replace(/[\d.]+\)$/,'0.35)'));
+        ctx.fillStyle=barGrad;
+        ctx.beginPath();ctx.roundRect(padLeft+labelW,y,barW,barH,5);ctx.fill();
+        
+        // Topic label (left of bar)
+        ctx.fillStyle='rgba(255,255,255,.8)';ctx.font='bold 9px "Noto Sans SC"';ctx.textAlign='right';
+        ctx.fillText(e[0],padLeft+labelW-8,y+barH/2+3);
+        
+        // Count on bar
+        ctx.fillStyle='rgba(255,255,255,.85)';ctx.font='bold 8px "Noto Sans SC"';ctx.textAlign='left';
+        ctx.fillText(Math.round(e[1]*10)/10,padLeft+labelW+barW+6,y+barH/2+3);
+    });
+    
+    // Summary
+    ctx.fillStyle='rgba(255,255,255,.3)';ctx.font='7px "Noto Sans SC"';ctx.textAlign='left';
+    ctx.fillText(`共${records.length}次测验 | ${entries.length}个重点复习项`,padLeft,chartH-4);
 }
 
 setAvatarIdle();
